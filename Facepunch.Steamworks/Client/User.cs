@@ -53,5 +53,13 @@ namespace Facepunch.Steamworks
             richPresence.Clear();
             client.native.friends.ClearRichPresence();
         }
+
+        /// <summary>
+        /// Get the local storage folder for current Steam account to write application data, e.g. save games, configs etc.
+        /// </summary>
+        public string GetUserDataFolder()
+        {
+            return client.native.user.GetUserDataFolder();
+        }
     }
 }
