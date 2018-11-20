@@ -8,7 +8,7 @@ Added function to retrieve the steam folder for save data:
 `string userpath = Client.User.GetUserDataFolder()`
 
 To get the correct user ID: 
-`string userID = ((uint)Client.SteamID).ToString()`
+`string userID = ((uint)Client.SteamId).ToString()`
 
 
 # Facepunch.Steamworks
