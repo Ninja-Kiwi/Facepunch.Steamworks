@@ -1,10 +1,15 @@
-This is a fork of the Facepunch steamworks integration
+# NinjaKiwi Fork
+
+This is a fork of the Facepunch steamworks integration 
 
 Notes:
 
-Added Client.User.GetUserDataFolder() to retrieve the steam folder for save data.
+Added function to retrieve the steam folder for save data:
+`string userpath = Client.User.GetUserDataFolder()`
 
-To get the correct user ID: string userID = ((uint)Client.SteamID).ToString()
+To get the correct user ID: 
+`string userID = ((uint)Client.SteamID).ToString()`
+
 
 # Facepunch.Steamworks
 A c# Steamworks implementation
