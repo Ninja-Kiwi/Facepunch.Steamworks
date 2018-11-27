@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +26,7 @@ namespace Facepunch.Steamworks.Interop
         internal SteamNative.SteamGameServer gameServer;
         internal SteamNative.SteamGameServerStats gameServerStats;
         internal SteamNative.SteamRemoteStorage remoteStorage;
+		internal SteamNative.SteamHTMLSurface htmlSurface;
 
         private bool isServer;
 
@@ -128,6 +129,8 @@ namespace Facepunch.Steamworks.Interop
             remoteStorage = client.GetISteamRemoteStorage( huser, hpipe, SteamNative.Defines.STEAMREMOTESTORAGE_INTERFACE_VERSION );
             matchmaking = client.GetISteamMatchmaking( huser, hpipe, SteamNative.Defines.STEAMMATCHMAKING_INTERFACE_VERSION );
             applist = client.GetISteamAppList( huser, hpipe, SteamNative.Defines.STEAMAPPLIST_INTERFACE_VERSION );
+			htmlSurface = client.GetISteamHTMLSurface(huser, hpipe, SteamNative.Defines.STEAMHTMLSURFACE_INTERFACE_VERSION);
+
         }
 
         public void Dispose()
@@ -227,6 +230,12 @@ namespace Facepunch.Steamworks.Interop
                 applist.Dispose();
                 applist = null;
             }
+
+			if (htmlSurface != null)
+            {
+				htmlSurface.Dispose();
+				htmlSurface = null;
+			}
 
             if ( client != null )
             {
