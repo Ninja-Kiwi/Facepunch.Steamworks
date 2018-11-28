@@ -18,30 +18,15 @@ namespace Facepunch.Steamworks {
 		}
 	}
 
-	// same as HHTMLBrowser, just public
-	// only used to keep methods similar to steamworks.net
-	// should never need more than one browser, probably ok to move into HtmlSurface
-	public class HTMLBrowser {
-		public uint Value;
-
-		public static implicit operator HTMLBrowser(uint value) {
-			return new HTMLBrowser() { Value = value };
-		}
-
-		public static implicit operator uint(HTMLBrowser value) {
-			return value.Value;
-		}
-	}
-
 	public class HtmlSurface {
 		internal Client client;
-		//internal HHTMLBrowser browserHandle;
+		internal HHTMLBrowser browserHandle;
 		public delegate void FailureCallback();
 		
-		public delegate void BrowserCallback(HTMLBrowser browserHandle);
-		public delegate void StartRequestCallback(HTMLBrowser browserHandle, string pchURL);
+		public delegate void BrowserCallback();
+		public delegate void StartRequestCallback(string pchURL);
 		public delegate void NeedsPaintCallback(uint unWide, uint unTall, string pBGRA);
-		public delegate void FinishedRequestCallback(HTMLBrowser browserHandle, string url);
+		public delegate void FinishedRequestCallback(string url);
 		
 		// public BrowserCallback OnBrowserReady;
 		public NeedsPaintCallback OnNeedsPaint;
@@ -75,63 +60,63 @@ namespace Facepunch.Steamworks {
 					onFailure?.Invoke();
 				}
 				else {
-					// browserHandle = result.UnBrowserHandle;
-					onSuccess((uint)result.UnBrowserHandle);
+					browserHandle = result.UnBrowserHandle;
+					onSuccess();
 				}
 			});
 		}
-		public void LoadURL(HTMLBrowser browserHandle, string url, string pchPostData = null) {
-			client.native.htmlSurface.LoadURL((uint)browserHandle, url, pchPostData);
+		public void LoadURL(string url, string pchPostData = null) {
+			client.native.htmlSurface.LoadURL(browserHandle, url, pchPostData);
 		}
-		public void LoadURL(HTMLBrowser browserHandle, string url, uint width, uint height) {
-			client.native.htmlSurface.LoadURL((uint)browserHandle, url, "");
-			client.native.htmlSurface.SetSize((uint)browserHandle, width, height);
-			client.native.htmlSurface.SetKeyFocus((uint)browserHandle, true);
+		public void LoadURL(string url, uint width, uint height) {
+			client.native.htmlSurface.LoadURL(browserHandle, url, "");
+			client.native.htmlSurface.SetSize(browserHandle, width, height);
+			client.native.htmlSurface.SetKeyFocus(browserHandle, true);
 		}
-		public void SetSize(HTMLBrowser browserHandle, uint unWidth, uint unHeight) {
-			client.native.htmlSurface.SetSize((uint)browserHandle, unWidth, unHeight);
+		public void SetSize(uint unWidth, uint unHeight) {
+			client.native.htmlSurface.SetSize(browserHandle, unWidth, unHeight);
 		}
-		public void Reload(HTMLBrowser browserHandle) {
-			client.native.htmlSurface.Reload((uint)browserHandle);
+		public void Reload() {
+			client.native.htmlSurface.Reload(browserHandle);
 		}
-		public void StopLoad(HTMLBrowser browserHandle) {
-			client.native.htmlSurface.StopLoad((uint)browserHandle);
+		public void StopLoad() {
+			client.native.htmlSurface.StopLoad(browserHandle);
 		}
-		public void MouseDown(HTMLBrowser browserHandle, Facepunch.Steamworks.HTMLMouseButton eMouseButton ) {
-			client.native.htmlSurface.MouseDown((uint)browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
+		public void MouseDown(Facepunch.Steamworks.HTMLMouseButton eMouseButton ) {
+			client.native.htmlSurface.MouseDown(browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
 		}
-		public void MouseWheel(HTMLBrowser browserHandle, int delta) {
-			client.native.htmlSurface.MouseWheel((uint)browserHandle, delta);
+		public void MouseWheel(int delta) {
+			client.native.htmlSurface.MouseWheel(browserHandle, delta);
 		}
-		public void MouseUp(HTMLBrowser browserHandle, Facepunch.Steamworks.HTMLMouseButton eMouseButton) {
-			client.native.htmlSurface.MouseUp((uint)browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
+		public void MouseUp(Facepunch.Steamworks.HTMLMouseButton eMouseButton) {
+			client.native.htmlSurface.MouseUp(browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
 		}
-		public void KeyDown(HTMLBrowser browserHandle, uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
-			client.native.htmlSurface.KeyDown((uint)browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers) eHTMLKeyModifiers);
+		public void KeyDown(uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+			client.native.htmlSurface.KeyDown(browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers) eHTMLKeyModifiers);
 		}
-		public void MouseMove(HTMLBrowser browserHandle, int x, int y) {
-			client.native.htmlSurface.MouseMove((uint)browserHandle, x, y);
+		public void MouseMove(int x, int y) {
+			client.native.htmlSurface.MouseMove(browserHandle, x, y);
 		}
-		public void KeyUp(HTMLBrowser browserHandle, uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
-			client.native.htmlSurface.KeyUp((uint)browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
+		public void KeyUp(uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+			client.native.htmlSurface.KeyUp(browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
 		}
-		public void KeyChar(HTMLBrowser browserHandle, uint cUnicodeChar, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
-			client.native.htmlSurface.KeyChar((uint)browserHandle, cUnicodeChar, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
+		public void KeyChar(uint cUnicodeChar, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+			client.native.htmlSurface.KeyChar(browserHandle, cUnicodeChar, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
 		}
-		public void SetVerticalScroll(HTMLBrowser browserHandle, uint nAbsolutePixelScroll) {
-			client.native.htmlSurface.SetVerticalScroll((uint)browserHandle, nAbsolutePixelScroll);
+		public void SetVerticalScroll(uint nAbsolutePixelScroll) {
+			client.native.htmlSurface.SetVerticalScroll(browserHandle, nAbsolutePixelScroll);
 		}
-		public void SetHorizontalScroll(HTMLBrowser browserHandle, uint nAbsolutePixelScroll) {
-			client.native.htmlSurface.SetHorizontalScroll((uint)browserHandle, nAbsolutePixelScroll);
+		public void SetHorizontalScroll(uint nAbsolutePixelScroll) {
+			client.native.htmlSurface.SetHorizontalScroll(browserHandle, nAbsolutePixelScroll);
 		}
-		public void AllowStartRequest(HTMLBrowser browserHandle, bool allow) {
-			client.native.htmlSurface.AllowStartRequest((uint)browserHandle, allow);
+		public void AllowStartRequest(bool allow) {
+			client.native.htmlSurface.AllowStartRequest(browserHandle, allow);
 		}
-		public void ExecuteJavascript(HTMLBrowser browserHandle, string script) {
-			client.native.htmlSurface.ExecuteJavascript((uint)browserHandle, script);
+		public void ExecuteJavascript(string script) {
+			client.native.htmlSurface.ExecuteJavascript(browserHandle, script);
 		}
-		public void RemoveBrowser(HTMLBrowser browserHandle) {
-			client.native.htmlSurface.RemoveBrowser((uint)browserHandle);
+		public void RemoveBrowser() {
+			client.native.htmlSurface.RemoveBrowser(browserHandle);
 		}
 		/*private unsafe void OnBrowserReadyAPI(HTML_BrowserReady_t callbackdata) {
 			//Console.Error.WriteLine("HtmlSurface: OnBrowserReadyAPI");
@@ -140,12 +125,12 @@ namespace Facepunch.Steamworks {
 		private unsafe void OnStartRequestAPI(HTML_StartRequest_t callbackdata) {
 			// doesn't show in unity? Need to add to SteamNative.Structs.cs e.g check HTML_FinishedRequest_t
 			//throw new Exception("OnStartRequestAPI");
-			OnStartRequest?.Invoke((uint)callbackdata.UnBrowserHandle, callbackdata.PchURL);
+			OnStartRequest?.Invoke(callbackdata.PchURL);
 			// client.native.htmlSurface.AllowStartRequest(callbackdata.UnBrowserHandle, true);
 		}
 		private unsafe void OnFinishedRequestAPI(HTML_FinishedRequest_t callbackdata) {
 			// shows in unity. throw new Exception("OnFinishedRequestAPI");
-			OnFinishedRequest?.Invoke((uint)callbackdata.UnBrowserHandle, callbackdata.PchURL);
+			OnFinishedRequest?.Invoke(callbackdata.PchURL);
 		}
 		private unsafe void OnJSAlertAPI(HTML_JSAlert_t callbackdata) {
 			Console.Error.WriteLine("HtmlSurface: OnJSAlertAPI");
