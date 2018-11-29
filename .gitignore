@@ -74,3 +74,6 @@ packages
 Generator/bin
 *.XML
 .vs
+Generator/Newtonsoft.Json.dll
+Generator/Generator.exe.config
+Generator/Generator.exe

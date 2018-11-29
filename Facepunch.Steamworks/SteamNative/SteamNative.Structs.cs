@@ -197,6 +197,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -365,6 +366,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -545,6 +547,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -719,6 +722,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -893,6 +897,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -1066,6 +1071,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -1237,6 +1243,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -1407,6 +1414,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -1582,6 +1590,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -1850,6 +1859,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2018,6 +2028,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2193,6 +2204,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2364,6 +2376,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2541,6 +2554,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2720,6 +2734,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -2891,6 +2906,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3064,6 +3080,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3238,6 +3255,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3409,6 +3427,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3590,6 +3609,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3760,6 +3780,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -3936,6 +3957,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -4107,6 +4129,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -4286,6 +4309,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -4467,6 +4491,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -4651,6 +4676,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -4834,6 +4860,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -5002,6 +5029,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -5176,6 +5204,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -5349,6 +5378,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -5522,6 +5552,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -5915,6 +5946,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6089,6 +6121,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6273,6 +6306,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6447,6 +6481,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6624,6 +6659,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6801,6 +6837,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -6978,6 +7015,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -7151,6 +7189,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -7325,6 +7364,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -7501,6 +7541,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -7674,6 +7715,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -7842,6 +7884,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8060,6 +8103,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8234,6 +8278,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8418,6 +8463,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8589,6 +8635,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8770,6 +8817,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -8946,6 +8994,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -9122,6 +9171,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -9306,6 +9356,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -9482,6 +9533,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -9671,6 +9723,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -9847,6 +9900,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -10028,6 +10082,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -10218,6 +10273,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -10467,6 +10523,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -10662,6 +10719,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -10850,6 +10908,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11021,6 +11080,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11192,6 +11252,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11363,6 +11424,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11539,6 +11601,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11713,6 +11776,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -11892,6 +11956,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12071,6 +12136,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12263,6 +12329,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12441,6 +12508,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12615,6 +12683,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12788,6 +12857,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -12970,6 +13040,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -13202,6 +13273,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -13373,6 +13445,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -13557,6 +13630,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -13733,6 +13807,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -13912,6 +13987,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14100,6 +14176,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14276,6 +14353,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14444,6 +14522,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14625,6 +14704,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14801,6 +14881,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -14977,6 +15058,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -15151,6 +15233,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -15327,6 +15410,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -15495,6 +15579,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -15666,6 +15751,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -15845,6 +15931,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16029,6 +16116,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16259,6 +16347,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16430,6 +16519,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16607,6 +16697,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16778,6 +16869,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -16946,6 +17038,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17116,6 +17209,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17286,6 +17380,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17454,6 +17549,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17622,6 +17718,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17790,6 +17887,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -17958,6 +18056,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -18140,6 +18239,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -18311,6 +18411,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -18488,6 +18589,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -18975,6 +19077,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -19148,6 +19251,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -19329,6 +19433,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -19510,6 +19615,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -19684,6 +19790,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -19865,6 +19972,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20046,6 +20154,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20237,6 +20346,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20410,6 +20520,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20583,6 +20694,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20762,6 +20874,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -20941,6 +21054,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21120,6 +21234,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21299,6 +21414,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21486,6 +21602,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21662,6 +21779,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21830,6 +21948,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -21998,6 +22117,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -22171,6 +22291,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -22204,8 +22325,9 @@ namespace SteamNative
 	[StructLayout( LayoutKind.Sequential, Pack = 8 )]
 	internal struct HTML_NeedsPaint_t
 	{
+		internal const int CallbackId = CallbackIdentifiers.SteamHTMLSurface + 2;
 		internal uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
-		internal string PBGRA; // pBGRA const char *
+		internal IntPtr PBGRA; // pBGRA IntPtr
 		internal uint UnWide; // unWide uint32
 		internal uint UnTall; // unTall uint32
 		internal uint UnUpdateX; // unUpdateX uint32
@@ -22239,7 +22361,7 @@ namespace SteamNative
 		internal struct PackSmall
 		{
 			internal uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
-			internal string PBGRA; // pBGRA const char *
+			internal IntPtr PBGRA; // pBGRA IntPtr
 			internal uint UnWide; // unWide uint32
 			internal uint UnTall; // unTall uint32
 			internal uint UnUpdateX; // unUpdateX uint32
@@ -22273,11 +22395,139 @@ namespace SteamNative
 				};
 			}
 		}
+		
+		internal static void Register( Facepunch.Steamworks.BaseSteamworks steamworks )
+		{
+			var handle = new CallbackHandle( steamworks );
+			
+			//
+			// Create the functions we need for the vtable
+			//
+			if ( Facepunch.Steamworks.Config.UseThisCall )
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWinThis ) ) );
+					var vTable = new Callback.VTableWinThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableThis ) ) );
+					var vTable = new Callback.VTableThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			else
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWin ) ) );
+					var vTable = new Callback.VTableWin
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTable ) ) );
+					var vTable = new Callback.VTable
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			
+			//
+			// Create the callback object
+			//
+			var cb = new Callback();
+			cb.vTablePtr = handle.vTablePtr;
+			cb.CallbackFlags = steamworks.IsGameServer ? (byte) SteamNative.Callback.Flags.GameServer : (byte) 0;
+			cb.CallbackId = CallbackId;
+			
+			//
+			// Pin the callback, so it doesn't get garbage collected and we can pass the pointer to native
+			//
+			handle.PinnedCallback = GCHandle.Alloc( cb, GCHandleType.Pinned );
+			
+			//
+			// Register the callback with Steam
+			//
+			steamworks.native.api.SteamAPI_RegisterCallback( handle.PinnedCallback.AddrOfPinnedObject(), CallbackId );
+			
+			steamworks.RegisterCallbackHandle( handle );
+		}
+		
+		//TEST
+		[MonoPInvokeCallback]
+		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfoThis( IntPtr self, IntPtr param, bool failure, SteamNative.SteamAPICall_t call ){ OnResultWithInfo( param, failure, call ); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSizeThis( IntPtr self ){ return OnGetSize(); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSize(){ return StructSize(); }
+		
+		[MonoPInvokeCallback]
+		internal static void OnResult( IntPtr param )
+		{
+			OnResultWithInfo( param, false, 0 );
+		}
+		
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfo( IntPtr param, bool failure, SteamNative.SteamAPICall_t call )
+		{
+			if ( failure ) return;
+			
+			var value = FromPointer( param );
+			
+			if ( Facepunch.Steamworks.Client.Instance != null )
+			    Facepunch.Steamworks.Client.Instance.OnCallback<HTML_NeedsPaint_t>( value );
+			
+			if ( Facepunch.Steamworks.Server.Instance != null )
+			    Facepunch.Steamworks.Server.Instance.OnCallback<HTML_NeedsPaint_t>( value );
+		}
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = 8 )]
 	internal struct HTML_StartRequest_t
 	{
+		internal const int CallbackId = CallbackIdentifiers.SteamHTMLSurface + 3;
 		internal uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
 		internal string PchURL; // pchURL const char *
 		internal string PchTarget; // pchTarget const char *
@@ -22328,11 +22578,139 @@ namespace SteamNative
 				};
 			}
 		}
+		
+		internal static void Register( Facepunch.Steamworks.BaseSteamworks steamworks )
+		{
+			var handle = new CallbackHandle( steamworks );
+			
+			//
+			// Create the functions we need for the vtable
+			//
+			if ( Facepunch.Steamworks.Config.UseThisCall )
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWinThis ) ) );
+					var vTable = new Callback.VTableWinThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableThis ) ) );
+					var vTable = new Callback.VTableThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			else
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWin ) ) );
+					var vTable = new Callback.VTableWin
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTable ) ) );
+					var vTable = new Callback.VTable
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			
+			//
+			// Create the callback object
+			//
+			var cb = new Callback();
+			cb.vTablePtr = handle.vTablePtr;
+			cb.CallbackFlags = steamworks.IsGameServer ? (byte) SteamNative.Callback.Flags.GameServer : (byte) 0;
+			cb.CallbackId = CallbackId;
+			
+			//
+			// Pin the callback, so it doesn't get garbage collected and we can pass the pointer to native
+			//
+			handle.PinnedCallback = GCHandle.Alloc( cb, GCHandleType.Pinned );
+			
+			//
+			// Register the callback with Steam
+			//
+			steamworks.native.api.SteamAPI_RegisterCallback( handle.PinnedCallback.AddrOfPinnedObject(), CallbackId );
+			
+			steamworks.RegisterCallbackHandle( handle );
+		}
+		
+		//TEST
+		[MonoPInvokeCallback]
+		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfoThis( IntPtr self, IntPtr param, bool failure, SteamNative.SteamAPICall_t call ){ OnResultWithInfo( param, failure, call ); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSizeThis( IntPtr self ){ return OnGetSize(); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSize(){ return StructSize(); }
+		
+		[MonoPInvokeCallback]
+		internal static void OnResult( IntPtr param )
+		{
+			OnResultWithInfo( param, false, 0 );
+		}
+		
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfo( IntPtr param, bool failure, SteamNative.SteamAPICall_t call )
+		{
+			if ( failure ) return;
+			
+			var value = FromPointer( param );
+			
+			if ( Facepunch.Steamworks.Client.Instance != null )
+			    Facepunch.Steamworks.Client.Instance.OnCallback<HTML_StartRequest_t>( value );
+			
+			if ( Facepunch.Steamworks.Server.Instance != null )
+			    Facepunch.Steamworks.Server.Instance.OnCallback<HTML_StartRequest_t>( value );
+		}
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = 8 )]
 	internal struct HTML_CloseBrowser_t
 	{
+		internal const int CallbackId = CallbackIdentifiers.SteamHTMLSurface + 4;
 		internal uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
 		
 		//
@@ -22368,6 +22746,133 @@ namespace SteamNative
 					UnBrowserHandle = d.UnBrowserHandle,
 				};
 			}
+		}
+		
+		internal static void Register( Facepunch.Steamworks.BaseSteamworks steamworks )
+		{
+			var handle = new CallbackHandle( steamworks );
+			
+			//
+			// Create the functions we need for the vtable
+			//
+			if ( Facepunch.Steamworks.Config.UseThisCall )
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWinThis ) ) );
+					var vTable = new Callback.VTableWinThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableThis ) ) );
+					var vTable = new Callback.VTableThis
+					{
+						ResultA = OnResultThis,
+						ResultB = OnResultWithInfoThis,
+						GetSize = OnGetSizeThis,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			else
+			{
+				//
+				// Create the VTable by manually allocating the memory and copying across
+				//
+				if ( Platform.IsWindows )
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTableWin ) ) );
+					var vTable = new Callback.VTableWin
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+				else
+				{
+					handle.vTablePtr = Marshal.AllocHGlobal( Marshal.SizeOf( typeof( Callback.VTable ) ) );
+					var vTable = new Callback.VTable
+					{
+						ResultA = OnResult,
+						ResultB = OnResultWithInfo,
+						GetSize = OnGetSize,
+					};
+					handle.FuncA = GCHandle.Alloc( vTable.ResultA );
+					handle.FuncB = GCHandle.Alloc( vTable.ResultB );
+					handle.FuncC = GCHandle.Alloc( vTable.GetSize );
+					Marshal.StructureToPtr( vTable, handle.vTablePtr, false );
+				}
+			}
+			
+			//
+			// Create the callback object
+			//
+			var cb = new Callback();
+			cb.vTablePtr = handle.vTablePtr;
+			cb.CallbackFlags = steamworks.IsGameServer ? (byte) SteamNative.Callback.Flags.GameServer : (byte) 0;
+			cb.CallbackId = CallbackId;
+			
+			//
+			// Pin the callback, so it doesn't get garbage collected and we can pass the pointer to native
+			//
+			handle.PinnedCallback = GCHandle.Alloc( cb, GCHandleType.Pinned );
+			
+			//
+			// Register the callback with Steam
+			//
+			steamworks.native.api.SteamAPI_RegisterCallback( handle.PinnedCallback.AddrOfPinnedObject(), CallbackId );
+			
+			steamworks.RegisterCallbackHandle( handle );
+		}
+		
+		//TEST
+		[MonoPInvokeCallback]
+		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfoThis( IntPtr self, IntPtr param, bool failure, SteamNative.SteamAPICall_t call ){ OnResultWithInfo( param, failure, call ); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSizeThis( IntPtr self ){ return OnGetSize(); }
+		[MonoPInvokeCallback]
+		internal static int OnGetSize(){ return StructSize(); }
+		
+		[MonoPInvokeCallback]
+		internal static void OnResult( IntPtr param )
+		{
+			OnResultWithInfo( param, false, 0 );
+		}
+		
+		[MonoPInvokeCallback]
+		internal static void OnResultWithInfo( IntPtr param, bool failure, SteamNative.SteamAPICall_t call )
+		{
+			if ( failure ) return;
+			
+			var value = FromPointer( param );
+			
+			if ( Facepunch.Steamworks.Client.Instance != null )
+			    Facepunch.Steamworks.Client.Instance.OnCallback<HTML_CloseBrowser_t>( value );
+			
+			if ( Facepunch.Steamworks.Server.Instance != null )
+			    Facepunch.Steamworks.Server.Instance.OnCallback<HTML_CloseBrowser_t>( value );
 		}
 	}
 	
@@ -22528,6 +23033,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -22702,6 +23208,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -22873,6 +23380,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23044,6 +23552,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23218,6 +23727,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23396,6 +23906,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23581,6 +24092,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23766,6 +24278,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -23953,6 +24466,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24124,6 +24638,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24295,6 +24810,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24469,6 +24985,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24655,6 +25172,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24826,6 +25344,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -24997,6 +25516,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -25168,6 +25688,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -25339,6 +25860,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -25507,6 +26029,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -25678,6 +26201,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -25899,6 +26423,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26067,6 +26592,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26251,6 +26777,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26430,6 +26957,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26608,6 +27136,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26776,6 +27305,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -26952,6 +27482,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27123,6 +27654,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27294,6 +27826,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27470,6 +28003,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27641,6 +28175,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27819,6 +28354,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -27987,6 +28523,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -28164,6 +28701,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -28345,6 +28883,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -28538,6 +29077,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -28711,6 +29251,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -28896,6 +29437,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29072,6 +29614,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29248,6 +29791,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29416,6 +29960,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29587,6 +30132,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29752,6 +30298,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -29917,6 +30464,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30082,6 +30630,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30247,6 +30796,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30415,6 +30965,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30580,6 +31131,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30745,6 +31297,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -30910,6 +31463,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -31075,6 +31629,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -31240,6 +31795,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -31408,6 +31964,7 @@ namespace SteamNative
 			steamworks.RegisterCallbackHandle( handle );
 		}
 		
+		//TEST
 		[MonoPInvokeCallback]
 		internal static void OnResultThis( IntPtr self, IntPtr param ){ OnResult( param ); }
 		[MonoPInvokeCallback]
@@ -31563,6 +32120,9 @@ namespace SteamNative
 			SteamAppInstalled_t.Register( steamworks );
 			SteamAppUninstalled_t.Register( steamworks );
 			HTML_BrowserReady_t.Register( steamworks );
+			HTML_NeedsPaint_t.Register( steamworks );
+			HTML_StartRequest_t.Register( steamworks );
+			HTML_CloseBrowser_t.Register( steamworks );
 			HTML_URLChanged_t.Register( steamworks );
 			HTML_FinishedRequest_t.Register( steamworks );
 			HTML_OpenLinkInNewTab_t.Register( steamworks );

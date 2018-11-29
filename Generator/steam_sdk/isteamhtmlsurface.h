@@ -224,7 +224,7 @@ END_DEFINE_CALLBACK_1()
 //-----------------------------------------------------------------------------
 // Purpose: the browser has a pending paint
 //-----------------------------------------------------------------------------
-DEFINE_CALLBACK(HTML_NeedsPaint_t, k_iSteamHTMLSurfaceCallbacks + 2)
+DEFINE_CALLBACK( HTML_NeedsPaint_t, k_iSteamHTMLSurfaceCallbacks + 2 )
 CALLBACK_MEMBER(0, HHTMLBrowser, unBrowserHandle) // the browser that needs the paint
 CALLBACK_MEMBER(1, const char *, pBGRA ) // a pointer to the B8G8R8A8 data for this surface, valid until SteamAPI_RunCallbacks is next called
 CALLBACK_MEMBER(2, uint32, unWide) // the total width of the pBGRA texture
@@ -244,7 +244,7 @@ END_DEFINE_CALLBACK_12()
 // Purpose: The browser wanted to navigate to a new page
 //   NOTE - you MUST call AllowStartRequest in response to this callback
 //-----------------------------------------------------------------------------
-DEFINE_CALLBACK(HTML_StartRequest_t, k_iSteamHTMLSurfaceCallbacks + 3)
+DEFINE_CALLBACK( HTML_StartRequest_t, k_iSteamHTMLSurfaceCallbacks + 3 )
 CALLBACK_MEMBER(0, HHTMLBrowser, unBrowserHandle) // the handle of the surface navigating
 CALLBACK_MEMBER(1, const char *, pchURL) // the url they wish to navigate to 
 CALLBACK_MEMBER(2, const char *, pchTarget) // the html link target type  (i.e _blank, _self, _parent, _top )
@@ -256,7 +256,7 @@ END_DEFINE_CALLBACK_5()
 //-----------------------------------------------------------------------------
 // Purpose: The browser has been requested to close due to user interaction (usually from a javascript window.close() call)
 //-----------------------------------------------------------------------------
-DEFINE_CALLBACK(HTML_CloseBrowser_t, k_iSteamHTMLSurfaceCallbacks + 4)
+DEFINE_CALLBACK( HTML_CloseBrowser_t, k_iSteamHTMLSurfaceCallbacks + 4 )
 CALLBACK_MEMBER(0, HHTMLBrowser, unBrowserHandle) // the handle of the surface 
 END_DEFINE_CALLBACK_1()
 

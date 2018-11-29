@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SteamNative;
 
 namespace Facepunch.Steamworks {
@@ -21,14 +18,17 @@ namespace Facepunch.Steamworks {
 	public class HtmlSurface {
 		internal Client client;
 		internal HHTMLBrowser browserHandle;
+		byte[] imgBytes;
+
 		public delegate void FailureCallback();
-		
 		public delegate void BrowserCallback();
 		public delegate void StartRequestCallback(string pchURL);
-		public delegate void NeedsPaintCallback(uint unWide, uint unTall, string pBGRA);
+		public delegate void NeedsPaintCallback(uint unWide, uint unTall, byte[] imgBytes);
 		public delegate void FinishedRequestCallback(string url);
-		
-		// public BrowserCallback OnBrowserReady;
+
+		// Note: CreateBrowser() doesn't always seem to return when the browser is ready
+		// use callback instead
+		//public BrowserCallback OnBrowserReady;
 		public NeedsPaintCallback OnNeedsPaint;
 		public StartRequestCallback OnStartRequest; 
 		public FinishedRequestCallback OnFinishedRequest; 
@@ -37,13 +37,13 @@ namespace Facepunch.Steamworks {
 			client = c;
 
 			// can get from CreateBrowser()
-			//client.RegisterCallback<SteamNative.HTML_BrowserReady_t>(OnBrowserReadyAPI);
-			client.RegisterCallback<SteamNative.HTML_StartRequest_t>(OnStartRequestAPI);
-			client.RegisterCallback<SteamNative.HTML_FinishedRequest_t>(OnFinishedRequestAPI);
-			client.RegisterCallback<SteamNative.HTML_JSAlert_t>(OnJSAlertAPI);
-			client.RegisterCallback<SteamNative.HTML_JSConfirm_t>(OnJSConfirmAPI);
-			client.RegisterCallback<SteamNative.HTML_FileOpenDialog_t>(OnFileOpenDialogAPI);
-			client.RegisterCallback<SteamNative.HTML_NeedsPaint_t>(OnNeedsPaintAPI);
+			//client.RegisterCallback<HTML_BrowserReady_t>(OnBrowserReadyAPI); not getting callback
+			client.RegisterCallback<HTML_StartRequest_t>(OnStartRequestAPI);
+			client.RegisterCallback<HTML_FinishedRequest_t>(OnFinishedRequestAPI);
+			client.RegisterCallback<HTML_JSAlert_t>(OnJSAlertAPI);
+			client.RegisterCallback<HTML_JSConfirm_t>(OnJSConfirmAPI);
+			client.RegisterCallback<HTML_FileOpenDialog_t>(OnFileOpenDialogAPI);
+			client.RegisterCallback<HTML_NeedsPaint_t>(OnNeedsPaintAPI);
 		}
 		public bool IsValid() {
 			return client.native.htmlSurface.IsValid;
@@ -54,14 +54,15 @@ namespace Facepunch.Steamworks {
 		public void Dispose() {
 			client = null;
 		}
-		public void CreateBrowser(string pchUserAgent, string pchUserCSS, BrowserCallback onSuccess, FailureCallback onFailure = null) {
+		public void CreateBrowser(string pchUserAgent, string pchUserCSS, BrowserCallback onSuccess, FailureCallback onFailure) {
+			 
 			client.native.htmlSurface.CreateBrowser(pchUserAgent, pchUserCSS, (result, error) => {
 				if (error) {
 					onFailure?.Invoke();
 				}
 				else {
 					browserHandle = result.UnBrowserHandle;
-					onSuccess();
+					onSuccess?.Invoke();
 				}
 			});
 		}
@@ -82,25 +83,25 @@ namespace Facepunch.Steamworks {
 		public void StopLoad() {
 			client.native.htmlSurface.StopLoad(browserHandle);
 		}
-		public void MouseDown(Facepunch.Steamworks.HTMLMouseButton eMouseButton ) {
+		public void MouseDown(HTMLMouseButton eMouseButton ) {
 			client.native.htmlSurface.MouseDown(browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
 		}
 		public void MouseWheel(int delta) {
 			client.native.htmlSurface.MouseWheel(browserHandle, delta);
 		}
-		public void MouseUp(Facepunch.Steamworks.HTMLMouseButton eMouseButton) {
+		public void MouseUp(HTMLMouseButton eMouseButton) {
 			client.native.htmlSurface.MouseUp(browserHandle, (SteamNative.HTMLMouseButton) eMouseButton);
 		}
-		public void KeyDown(uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+		public void KeyDown(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers) {
 			client.native.htmlSurface.KeyDown(browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers) eHTMLKeyModifiers);
 		}
 		public void MouseMove(int x, int y) {
 			client.native.htmlSurface.MouseMove(browserHandle, x, y);
 		}
-		public void KeyUp(uint nNativeKeyCode, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+		public void KeyUp(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers) {
 			client.native.htmlSurface.KeyUp(browserHandle, nNativeKeyCode, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
 		}
-		public void KeyChar(uint cUnicodeChar, Facepunch.Steamworks.HTMLKeyModifiers eHTMLKeyModifiers) {
+		public void KeyChar(uint cUnicodeChar, HTMLKeyModifiers eHTMLKeyModifiers) {
 			client.native.htmlSurface.KeyChar(browserHandle, cUnicodeChar, (SteamNative.HTMLKeyModifiers)eHTMLKeyModifiers);
 		}
 		public void SetVerticalScroll(uint nAbsolutePixelScroll) {
@@ -118,18 +119,14 @@ namespace Facepunch.Steamworks {
 		public void RemoveBrowser() {
 			client.native.htmlSurface.RemoveBrowser(browserHandle);
 		}
-		/*private unsafe void OnBrowserReadyAPI(HTML_BrowserReady_t callbackdata) {
-			//Console.Error.WriteLine("HtmlSurface: OnBrowserReadyAPI");
-			OnBrowserReady?.Invoke((uint)callbackdata.UnBrowserHandle);
-		}*/
+		//private unsafe void OnBrowserReadyAPI(HTML_BrowserReady_t callbackdata) {
+		//	OnBrowserReady?.Invoke();
+		//}
 		private unsafe void OnStartRequestAPI(HTML_StartRequest_t callbackdata) {
-			// doesn't show in unity? Need to add to SteamNative.Structs.cs e.g check HTML_FinishedRequest_t
-			//throw new Exception("OnStartRequestAPI");
 			OnStartRequest?.Invoke(callbackdata.PchURL);
 			// client.native.htmlSurface.AllowStartRequest(callbackdata.UnBrowserHandle, true);
 		}
 		private unsafe void OnFinishedRequestAPI(HTML_FinishedRequest_t callbackdata) {
-			// shows in unity. throw new Exception("OnFinishedRequestAPI");
 			OnFinishedRequest?.Invoke(callbackdata.PchURL);
 		}
 		private unsafe void OnJSAlertAPI(HTML_JSAlert_t callbackdata) {
@@ -142,8 +139,12 @@ namespace Facepunch.Steamworks {
 			Console.Error.WriteLine("HtmlSurface: OnFileOpenDialogAPI");
 		}
 		private unsafe void OnNeedsPaintAPI(HTML_NeedsPaint_t callbackdata) {
-			OnNeedsPaint?.Invoke(callbackdata.UnWide, callbackdata.UnTall, callbackdata.PBGRA);
-			//Console.Error.WriteLine("HtmlSurface: OnFileOpenDialogAPI");
+			int dataSize = (int)(callbackdata.UnWide * callbackdata.UnTall * 4);
+			if (imgBytes == null || imgBytes.Length != dataSize) {
+				imgBytes = new byte[dataSize];
+			}
+			System.Runtime.InteropServices.Marshal.Copy(callbackdata.PBGRA, imgBytes, 0, dataSize);
+			OnNeedsPaint?.Invoke(callbackdata.UnWide, callbackdata.UnTall, imgBytes);
 		}
 	}
 	

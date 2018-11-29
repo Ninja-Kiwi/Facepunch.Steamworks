@@ -1937,7 +1937,7 @@
 { "fieldname": "unBrowserHandle", "fieldtype": "HHTMLBrowser"}]}
 ,{"struct": "HTML_NeedsPaint_t","fields": [
 { "fieldname": "unBrowserHandle", "fieldtype": "HHTMLBrowser"},
-{ "fieldname": "pBGRA", "fieldtype": "const char *"},
+{ "fieldname": "pBGRA", "fieldtype": "IntPtr"},
 { "fieldname": "unWide", "fieldtype": "uint32"},
 { "fieldname": "unTall", "fieldtype": "uint32"},
 { "fieldname": "unUpdateX", "fieldtype": "uint32"},
