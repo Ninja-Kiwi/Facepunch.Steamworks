@@ -119,6 +119,12 @@ namespace Facepunch.Steamworks {
 		public void RemoveBrowser() {
 			client.native.htmlSurface.RemoveBrowser(browserHandle);
 		}
+		public void GoBack() {
+		       client.native.htmlSurface.GoBack(browserHandle);
+		}
+		public void GoFormat() {
+		       client.native.htmlSurface.GoForward(browserHandle);
+		}
 		//private unsafe void OnBrowserReadyAPI(HTML_BrowserReady_t callbackdata) {
 		//	OnBrowserReady?.Invoke();
 		//}
