@@ -51,6 +51,9 @@ namespace Facepunch.Steamworks {
 		public unsafe bool Init() {
 			return client.native.htmlSurface.Init();
 		}
+		public unsafe bool Shutdown() {
+			return client.native.htmlSurface.Shutdown();
+		}
 		public void Dispose() {
 			client = null;
 		}
