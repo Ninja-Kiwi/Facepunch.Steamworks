@@ -65,8 +65,16 @@ namespace Facepunch.Steamworks.Interop
             // from Steam, but if Steam is at the login prompt when you run your game it will return false.
             if ( !user.BLoggedOn() )
             {
-                Console.Error.WriteLine( "InitClient: Not Logged On" );
-                return false;
+                // Console.Error.WriteLine( "InitClient: Not Logged On" );
+                System.Diagnostics.Debug.WriteLine( "InitClient: Not Logged On" );
+		// IMPORTANT(jason): still allowing valid initialisation if the user is not logged on.
+		// As per Steam's docs, BLoggedOn() checks if steam is maintaining a connection to their servers.
+		// Their own notes say that we shouldn't _need_ to care about this since their internal
+		// APIs check this anyway and failing to init here would result in players being unable
+		// to access any features that don't require a real-time connection to steam.
+		// see https://partner/steamgames.com/doc/api/ISteamUser#BLoggedOn
+		// see [BATI-1674](https://ninjakiwi.atlassian.net/browse/BATI-1674)
+                // return false;
             }
 
             return true;
