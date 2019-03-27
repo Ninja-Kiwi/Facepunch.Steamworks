@@ -41,7 +41,8 @@ namespace Facepunch.Steamworks.Interop
 
             if ( !api.SteamAPI_Init() )
             {
-                Console.Error.WriteLine( "InitClient: SteamAPI_Init returned false" );
+                // Console.Error.WriteLine( "InitClient: SteamAPI_Init returned false" );
+                System.Diagnostics.Debug.WriteLine( "InitClient: SteamAPI_Init returned false" );
                 return false;
             }
 
@@ -49,7 +50,8 @@ namespace Facepunch.Steamworks.Interop
             var hPipe = api.SteamAPI_GetHSteamPipe();
             if ( hPipe == 0 )
             {
-                Console.Error.WriteLine( "InitClient: hPipe == 0" );
+                // Console.Error.WriteLine( "InitClient: hPipe == 0" );
+                System.Diagnostics.Debug.WriteLine( "InitClient: hPipe == 0" );
                 return false;
             }
 
@@ -57,7 +59,8 @@ namespace Facepunch.Steamworks.Interop
 
             if ( !user.IsValid )
             {
-                Console.Error.WriteLine( "InitClient: ISteamUser is null" );
+                // Console.Error.WriteLine( "InitClient: ISteamUser is null" );
+                System.Diagnostics.Debug.WriteLine( "InitClient: ISteamUser is null" );
                 return false;
             }
 

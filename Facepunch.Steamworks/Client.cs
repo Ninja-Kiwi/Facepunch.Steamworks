@@ -78,6 +78,7 @@ namespace Facepunch.Steamworks
             //
             if ( !native.InitClient( this ) )
             {
+                System.Diagnostics.Debug.Write("Failed to initialise steam client for platform: " + SteamNative.Platform.Os.ToString());
                 native.Dispose();
                 native = null;
                 Instance = null;
