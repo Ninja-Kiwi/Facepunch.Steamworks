@@ -6,7 +6,23 @@ namespace Steamworks
 {
     public class SteamHTMLSurface : SteamClientClass<SteamHTMLSurface>
 	{
+		public static event Action OnBrowserReady; // Paul: this didn't work on the old facepunch 0.7
+		public static event Action<string> OnRequestStarted;
+		public static event Action<string> OnRequestFinished;
+		public static event Action OnJSAlert;
+		public static event Action OnJSConfirm;
+		public static event Action OnFileOpenDialog;
+		public static event Action<uint, uint> OnNeedsPaint;
+
+		private static HHTMLBrowser browserHandle;
+
 		internal static ISteamHTMLSurface Internal => Interface as ISteamHTMLSurface;
+
+		public static bool IsValid => Internal.IsValid;
+
+		public static unsafe bool Init() => Internal.Init();
+
+		public static unsafe bool Shutdown() => Internal.Shutdown();
 
 		internal override void InitializeInterface( bool server )
 		{
@@ -25,135 +41,114 @@ namespace Steamworks
 			Dispatch.Install<HTML_NeedsPaint_t>(x => OnNeedsPaint?.Invoke(x.UnWide, x.UnTall));
 		}
 
-		public static event Action OnBrowserReady; // Paul: this didn't work on the old facepunch 0.7
-		public static event Action<string> OnRequestStarted;
-		public static event Action<string> OnRequestFinished;
-		public static event Action OnJSAlert;
-		public static event Action OnJSConfirm;
-		public static event Action OnFileOpenDialog;
-		public static event Action<uint, uint> OnNeedsPaint;
-
-		private HHTMLBrowser browserHandle;
-
-		public bool IsValid => Internal.IsValid;
-
-		public unsafe bool Init() => Internal.Init();
-
-		public unsafe bool Shutdown() => Internal.Shutdown();
-
 		/// <summary>
 		/// Throws System.InvalidOperationException @ htmlBrowser.Value when htmlBrowser.HasValue == false
 		/// </summary>
-		public async Task CreateBrowser(string pchUserAgent, string pchUserCSS)
+		public static async Task CreateBrowser(string pchUserAgent, string pchUserCSS)
 		{
             CallResult<HTML_BrowserReady_t> browserCall = Internal.CreateBrowser(pchUserAgent, pchUserCSS);
             HTML_BrowserReady_t? htmlBrowser = await browserCall.GetAwaiter();
 			browserHandle = htmlBrowser.Value.UnBrowserHandle;
 		}
 
-		public void LoadURL(string url, string pchPostData = null)
+		public static void LoadURL(string url, string pchPostData = null)
         {
 			Internal.LoadURL(browserHandle, url, pchPostData);
         }
 
-		public void LoadURL(string url, uint width, uint height)
+		public static void LoadURL(string url, uint width, uint height)
 		{
 			Internal.LoadURL(browserHandle, url, string.Empty);
 			Internal.SetSize(browserHandle, width, height);
 			Internal.SetKeyFocus(browserHandle, true);
 		}
 
-		public void SetSize(uint unWidth, uint unHeight)
+		public static void SetSize(uint unWidth, uint unHeight)
 		{
 			Internal.SetSize(browserHandle, unWidth, unHeight);
 		}
 
-		public void Reload()
+		public static void Reload()
 		{
 			Internal.Reload(browserHandle);
 		}
 
-		public void StopLoad()
+		public static void StopLoad()
 		{
 			Internal.StopLoad(browserHandle);
 		}
 
-		public void MouseDown(HTMLMouseButton eMouseButton)
+		public static void MouseDown(HTMLMouseButton eMouseButton)
 		{
 			Internal.MouseDown(browserHandle, new IntPtr((int)eMouseButton));
 		}
 
-		public void MouseWheel(int delta)
+		public static void MouseWheel(int delta)
 		{
 			Internal.MouseWheel(browserHandle, delta);
 		}
 
-		public void MouseUp(HTMLMouseButton eMouseButton)
+		public static void MouseUp(HTMLMouseButton eMouseButton)
 		{
 			Internal.MouseUp(browserHandle, new IntPtr((int)eMouseButton));
 		}
 
-		public void KeyDown(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers, bool bIsSystemKey = false)
+		public static void KeyDown(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers, bool bIsSystemKey = false)
 		{
 			Internal.KeyDown(browserHandle, nNativeKeyCode, new IntPtr((int)eHTMLKeyModifiers), bIsSystemKey);
 		}
 
-		public void MouseMove(int x, int y)
+		public static void MouseMove(int x, int y)
 		{
 			Internal.MouseMove(browserHandle, x, y);
 		}
 
-		public void KeyUp(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers)
+		public static void KeyUp(uint nNativeKeyCode, HTMLKeyModifiers eHTMLKeyModifiers)
 		{
 			Internal.KeyUp(browserHandle, nNativeKeyCode, new IntPtr((int)eHTMLKeyModifiers));
 		}
 
-		public void KeyChar(uint cUnicodeChar, HTMLKeyModifiers eHTMLKeyModifiers)
+		public static void KeyChar(uint cUnicodeChar, HTMLKeyModifiers eHTMLKeyModifiers)
 		{
 			Internal.KeyChar(browserHandle, cUnicodeChar, new IntPtr((int)eHTMLKeyModifiers));
 		}
 
-		public void SetVerticalScroll(uint nAbsolutePixelScroll)
+		public static void SetVerticalScroll(uint nAbsolutePixelScroll)
 		{
 			Internal.SetVerticalScroll(browserHandle, nAbsolutePixelScroll);
 		}
 
-		public void SetHorizontalScroll(uint nAbsolutePixelScroll)
+		public static void SetHorizontalScroll(uint nAbsolutePixelScroll)
 		{
 			Internal.SetHorizontalScroll(browserHandle, nAbsolutePixelScroll);
 		}
 
-		public void AllowStartRequest(bool allow)
+		public static void AllowStartRequest(bool allow)
 		{
 			Internal.AllowStartRequest(browserHandle, allow);
 		}
 
-		public void ExecuteJavascript(string script)
+		public static void ExecuteJavascript(string script)
 		{
 			Internal.ExecuteJavascript(browserHandle, script);
 		}
 
-		public void RemoveBrowser()
+		public static void RemoveBrowser()
 		{
 			Internal.RemoveBrowser(browserHandle);
 		}
 
-		public void GoBack()
+		public static void GoBack()
 		{
 			Internal.GoBack(browserHandle);
 		}
 
-		public void GoFormat()
+		public static void GoFormat()
 		{
 			Internal.GoForward(browserHandle);
 		}
 	}
 
-	// ----------------------------------------------------------------
-
-	//
-	// ISteamHTMLSurface::EHTMLMouseButton
-	//
 	public enum HTMLMouseButton : int
 	{
 		Left = 0,
@@ -161,9 +156,6 @@ namespace Steamworks
 		Middle = 2,
 	}
 
-	//
-	// ISteamHTMLSurface::EHTMLKeyModifiers
-	//
 	public enum HTMLKeyModifiers : int
 	{
 		None = 0,
