@@ -83,12 +83,6 @@ namespace Steamworks
 		/// </summary>
 		public static event Action<Friend> OnFriendRichPresenceUpdate;
 
-		/// <summary>
-		/// Dispatched when an overlay browser instance is navigated to a
-		/// protocol/scheme registered by RegisterProtocolInOverlayBrowser()
-		/// </summary>
-		public static event Action<string> OnOverlayBrowserProtocol;
-
 
 		static unsafe void OnFriendChatMessage( GameConnectedFriendChatMsg_t data )
 		{
