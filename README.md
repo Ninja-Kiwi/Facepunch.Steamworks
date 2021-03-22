@@ -1,3 +1,6 @@
+# Known issues
+- `HTML_StartRequest_t` callback isn't triggered which breaks the start request / allow request web view flow.
+
 # Facepunch.Steamworks
 
 [Another fucking c# Steamworks implementation](https://wiki.facepunch.com/steamworks/)
