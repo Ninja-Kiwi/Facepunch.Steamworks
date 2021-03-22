@@ -242,6 +242,7 @@ class ISteamParentalSettings;
 class ISteamGameSearch;
 class ISteamInput;
 class ISteamParties;
+class ISteamTV;
 class ISteamRemotePlay;
 
 //-----------------------------------------------------------------------------
@@ -309,7 +310,6 @@ enum { k_iSteamSTARCallbacks = 5500 };
 enum { k_iClientSTARCallbacks = 5600 };
 enum { k_iSteamRemotePlayCallbacks = 5700 };
 enum { k_iClientCompatCallbacks = 5800 };
-enum { k_iSteamChatCallbacks = 5900 };
 
 #ifdef _MSVC_VER
 #pragma warning( pop )
@@ -348,6 +348,7 @@ public:
 	ISteamHTMLSurface*	SteamHTMLSurface() const			{ return m_pSteamHTMLSurface; }
 	ISteamInventory*	SteamInventory() const				{ return m_pSteamInventory; }
 	ISteamVideo*		SteamVideo() const					{ return m_pSteamVideo; }
+	ISteamTV*			SteamTV() const						{ return m_pSteamTV; }
 	ISteamParentalSettings* SteamParentalSettings() const	{ return m_pSteamParentalSettings; }
 	ISteamInput*		SteamInput() const					{ return m_pSteamInput; }
 private:
@@ -372,6 +373,7 @@ private:
 	ISteamHTMLSurface	*m_pSteamHTMLSurface;
 	ISteamInventory		*m_pSteamInventory;
 	ISteamVideo			*m_pSteamVideo;
+	ISteamTV			*m_pSteamTV;
 	ISteamParentalSettings *m_pSteamParentalSettings;
 	ISteamInput			*m_pSteamInput;
 };

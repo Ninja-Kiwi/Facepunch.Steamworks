@@ -35,7 +35,6 @@ namespace Steamworks
 			Dispatch.Install<GameServerChangeRequested_t>( x => OnGameServerChangeRequested?.Invoke( x.ServerUTF8(), x.PasswordUTF8() ) );
 			Dispatch.Install<GameLobbyJoinRequested_t>( x => OnGameLobbyJoinRequested?.Invoke( new Lobby( x.SteamIDLobby ), x.SteamIDFriend ) );
 			Dispatch.Install<FriendRichPresenceUpdate_t>( x => OnFriendRichPresenceUpdate?.Invoke( new Friend( x.SteamIDFriend ) ) );
-			Dispatch.Install<OverlayBrowserProtocolNavigation_t>( x => OnOverlayBrowserProtocol?.Invoke( x.RgchURIUTF8() ) );
 		}
 
 		/// <summary>
@@ -376,15 +375,6 @@ namespace Steamworks
             } while (result != null && resultCount < result.Value.TotalResultCount);
 
             return steamIds.ToArray();
-        }
-
-		/// <summary>
-		/// Call this before calling ActivateGameOverlayToWebPage() to have the Steam Overlay Browser block navigations
-		///  to your specified protocol (scheme) uris and instead dispatch a OverlayBrowserProtocolNavigation callback to your game.
-		/// </summary>
-		public static bool RegisterProtocolInOverlayBrowser( string protocol )
-        {
-			return Internal.RegisterProtocolInOverlayBrowser( protocol );
         }
 
 		public static async Task<bool> JoinClanChatRoom( SteamId chatId )

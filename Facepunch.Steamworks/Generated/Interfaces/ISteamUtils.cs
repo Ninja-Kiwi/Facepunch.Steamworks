@@ -15,12 +15,12 @@ namespace Steamworks
 			SetupInterface( IsGameServer );
 		}
 		
-		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamUtils_v010", CallingConvention = Platform.CC)]
-		internal static extern IntPtr SteamAPI_SteamUtils_v010();
-		public override IntPtr GetUserInterfacePointer() => SteamAPI_SteamUtils_v010();
-		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamGameServerUtils_v010", CallingConvention = Platform.CC)]
-		internal static extern IntPtr SteamAPI_SteamGameServerUtils_v010();
-		public override IntPtr GetServerInterfacePointer() => SteamAPI_SteamGameServerUtils_v010();
+		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamUtils_v009", CallingConvention = Platform.CC)]
+		internal static extern IntPtr SteamAPI_SteamUtils_v009();
+		public override IntPtr GetUserInterfacePointer() => SteamAPI_SteamUtils_v009();
+		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamGameServerUtils_v009", CallingConvention = Platform.CC)]
+		internal static extern IntPtr SteamAPI_SteamGameServerUtils_v009();
+		public override IntPtr GetServerInterfacePointer() => SteamAPI_SteamGameServerUtils_v009();
 		
 		
 		#region FunctionMeta
@@ -366,24 +366,24 @@ namespace Steamworks
 		#region FunctionMeta
 		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUtils_InitFilterText", CallingConvention = Platform.CC)]
 		[return: MarshalAs( UnmanagedType.I1 )]
-		private static extern bool _InitFilterText( IntPtr self, uint unFilterOptions );
+		private static extern bool _InitFilterText( IntPtr self );
 		
 		#endregion
-		internal bool InitFilterText( uint unFilterOptions )
+		internal bool InitFilterText()
 		{
-			var returnValue = _InitFilterText( Self, unFilterOptions );
+			var returnValue = _InitFilterText( Self );
 			return returnValue;
 		}
 		
 		#region FunctionMeta
 		[DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUtils_FilterText", CallingConvention = Platform.CC)]
-		private static extern int _FilterText( IntPtr self, TextFilteringContext eContext, SteamId sourceSteamID, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, IntPtr pchOutFilteredText, uint nByteSizeOutFilteredText );
+		private static extern int _FilterText( IntPtr self, IntPtr pchOutFilteredText, uint nByteSizeOutFilteredText, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, [MarshalAs( UnmanagedType.U1 )] bool bLegalOnly );
 		
 		#endregion
-		internal int FilterText( TextFilteringContext eContext, SteamId sourceSteamID, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, out string pchOutFilteredText )
+		internal int FilterText( out string pchOutFilteredText, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, [MarshalAs( UnmanagedType.U1 )] bool bLegalOnly )
 		{
 			IntPtr mempchOutFilteredText = Helpers.TakeMemory();
-			var returnValue = _FilterText( Self, eContext, sourceSteamID, pchInputMessage, mempchOutFilteredText, (1024 * 32) );
+			var returnValue = _FilterText( Self, mempchOutFilteredText, (1024 * 32), pchInputMessage, bLegalOnly );
 			pchOutFilteredText = Helpers.MemoryToString( mempchOutFilteredText );
 			return returnValue;
 		}

@@ -18,6 +18,14 @@ namespace Steamworks.Data
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct FriendSessionStateInfo_t
+	{
+		internal uint IOnlineSessionInstances; // m_uiOnlineSessionInstances uint32
+		internal byte IPublishedToFriendsSessionInstance; // m_uiPublishedToFriendsSessionInstance uint8
+		
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal partial struct servernetadr_t
 	{
 		internal ushort ConnectionPort; // m_usConnectionPort uint16
@@ -161,29 +169,12 @@ namespace Steamworks.Data
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal partial struct SteamNetworkingPOPIDRender
+	internal struct SteamTVRegion_t
 	{
-		internal string BufUTF8() => System.Text.Encoding.UTF8.GetString( Buf, 0, System.Array.IndexOf<byte>( Buf, 0 ) );
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)] // byte[] buf
-		internal byte[] Buf; // buf char [8]
-		
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal partial struct NetIdentityRender
-	{
-		internal string BufUTF8() => System.Text.Encoding.UTF8.GetString( Buf, 0, System.Array.IndexOf<byte>( Buf, 0 ) );
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)] // byte[] buf
-		internal byte[] Buf; // buf char [128]
-		
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal partial struct NetAddressRender
-	{
-		internal string BufUTF8() => System.Text.Encoding.UTF8.GetString( Buf, 0, System.Array.IndexOf<byte>( Buf, 0 ) );
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)] // byte[] buf
-		internal byte[] Buf; // buf char [48]
+		internal uint UnMinX; // unMinX uint32
+		internal uint UnMinY; // unMinY uint32
+		internal uint UnMaxX; // unMaxX uint32
+		internal uint UnMaxY; // unMaxY uint32
 		
 	}
 	

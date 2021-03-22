@@ -16,10 +16,4 @@ namespace Steamworks
 
     [UnmanagedFunctionPointer( Platform.CC )]
     internal delegate void FnSteamRelayNetworkStatusChanged( ref SteamRelayNetworkStatus_t arg );
-
-    [UnmanagedFunctionPointer( Platform.CC )]
-    internal delegate void FnSteamNetworkingMessagesSessionRequest( ref SteamNetworkingMessagesSessionRequest_t arg );
-
-    [UnmanagedFunctionPointer( Platform.CC )]
-    internal delegate void FnSteamNetworkingMessagesSessionFailed( ref SteamNetworkingMessagesSessionFailed_t arg );
 }
