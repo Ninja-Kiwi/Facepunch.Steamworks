@@ -741,4 +741,19 @@ namespace Steamworks.Data
 		public int CompareTo( SteamInventoryUpdateHandle_t other ) => Value.CompareTo( other.Value );
 	}
 	
+	internal struct RemotePlaySessionID_t : IEquatable<RemotePlaySessionID_t>, IComparable<RemotePlaySessionID_t>
+	{
+		public uint Value;
+		
+		public static implicit operator RemotePlaySessionID_t( uint value ) => new RemotePlaySessionID_t(){ Value = value };
+		public static implicit operator uint( RemotePlaySessionID_t value ) => value.Value;
+		public override string ToString() => Value.ToString();
+		public override int GetHashCode() => Value.GetHashCode();
+		public override bool Equals( object p ) => this.Equals( (RemotePlaySessionID_t) p );
+		public bool Equals( RemotePlaySessionID_t p ) => p.Value == Value;
+		public static bool operator ==( RemotePlaySessionID_t a, RemotePlaySessionID_t b ) => a.Equals( b );
+		public static bool operator !=( RemotePlaySessionID_t a, RemotePlaySessionID_t b ) => !a.Equals( b );
+		public int CompareTo( RemotePlaySessionID_t other ) => Value.CompareTo( other.Value );
+	}
+	
 }

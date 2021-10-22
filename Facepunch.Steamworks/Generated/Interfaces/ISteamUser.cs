@@ -43,6 +43,7 @@ namespace Steamworks
 			_BIsPhoneIdentifying = Marshal.GetDelegateForFunctionPointer<FBIsPhoneIdentifying>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 216 ) ) );
 			_BIsPhoneRequiringVerification = Marshal.GetDelegateForFunctionPointer<FBIsPhoneRequiringVerification>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 224 ) ) );
 			_GetMarketEligibility = Marshal.GetDelegateForFunctionPointer<FGetMarketEligibility>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 232 ) ) );
+			_GetDurationControl = Marshal.GetDelegateForFunctionPointer<FGetDurationControl>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 240 ) ) );
 		}
 		internal override void Shutdown()
 		{
@@ -78,6 +79,7 @@ namespace Steamworks
 			_BIsPhoneIdentifying = null;
 			_BIsPhoneRequiringVerification = null;
 			_GetMarketEligibility = null;
+			_GetDurationControl = null;
 		}
 		
 		#region FunctionMeta
@@ -451,6 +453,18 @@ namespace Steamworks
 		{
 			var returnValue = _GetMarketEligibility( Self );
 			return await MarketEligibilityResponse_t.GetResultAsync( returnValue );
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		private delegate SteamAPICall_t FGetDurationControl( IntPtr self );
+		private FGetDurationControl _GetDurationControl;
+		
+		#endregion
+		internal async Task<DurationControl_t?> GetDurationControl()
+		{
+			var returnValue = _GetDurationControl( Self );
+			return await DurationControl_t.GetResultAsync( returnValue );
 		}
 		
 	}

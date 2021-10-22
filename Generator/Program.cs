@@ -16,7 +16,7 @@ namespace Generator
             var content = System.IO.File.ReadAllText( "steam_sdk/steam_api.json" );
             var def = Newtonsoft.Json.JsonConvert.DeserializeObject<SteamApiDefinition>( content );
 
-            AddMissing( def );
+            //AddMissing( def );
 
             var parser = new CodeParser( @"steam_sdk" );
 
@@ -27,7 +27,7 @@ namespace Generator
 
 			var generator = new CodeWriter( parser, def );
 
-            generator.ToFolder( "../Facepunch.Steamworks/Generated/" );
+            generator.ToFolder( "../../../Facepunch.Steamworks/Generated/" );
         }
 
         private static void AddMissing( SteamApiDefinition output )

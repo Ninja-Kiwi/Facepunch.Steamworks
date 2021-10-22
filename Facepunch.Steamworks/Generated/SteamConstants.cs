@@ -22,6 +22,7 @@ namespace Steamworks.Data
 		public const int SteamNetworking = 1200;
 		public const int SteamNetworkingSockets = 1220;
 		public const int SteamNetworkingMessages = 1250;
+		public const int SteamNetworkingUtils = 1280;
 		public const int ClientRemoteStorage = 1300;
 		public const int ClientDepotBuilder = 1400;
 		public const int SteamGameServerItems = 1500;
@@ -64,6 +65,9 @@ namespace Steamworks.Data
 		public const int SteamGameSearch = 5200;
 		public const int SteamParties = 5300;
 		public const int ClientParties = 5400;
+		public const int SteamSTAR = 5500;
+		public const int ClientSTAR = 5600;
+		public const int SteamRemotePlay = 5700;
 	}
 	internal static class Defines
 	{
@@ -73,7 +77,7 @@ namespace Steamworks.Data
 		internal const string STEAMCONTROLLER_INTERFACE_VERSION = "SteamController007";
 		internal const string STEAMFRIENDS_INTERFACE_VERSION = "SteamFriends017";
 		internal const string STEAMGAMECOORDINATOR_INTERFACE_VERSION = "SteamGameCoordinator001";
-		internal const string STEAMGAMESERVER_INTERFACE_VERSION = "SteamGameServer012";
+		internal const string STEAMGAMESERVER_INTERFACE_VERSION = "SteamGameServer013";
 		internal const string STEAMGAMESERVERSTATS_INTERFACE_VERSION = "SteamGameServerStats001";
 		internal const string STEAMHTMLSURFACE_INTERFACE_VERSION = "STEAMHTMLSURFACE_INTERFACE_VERSION_005";
 		internal const string STEAMHTTP_INTERFACE_VERSION = "STEAMHTTP_INTERFACE_VERSION003";
@@ -85,13 +89,14 @@ namespace Steamworks.Data
 		internal const string STEAMPARTIES_INTERFACE_VERSION = "SteamParties002";
 		internal const string STEAMMUSIC_INTERFACE_VERSION = "STEAMMUSIC_INTERFACE_VERSION001";
 		internal const string STEAMMUSICREMOTE_INTERFACE_VERSION = "STEAMMUSICREMOTE_INTERFACE_VERSION001";
-		internal const string STEAMNETWORKING_INTERFACE_VERSION = "SteamNetworking005";
-		internal const string STEAMNETWORKINGSOCKETS_INTERFACE_VERSION = "SteamNetworkingSockets002";
-		internal const string STEAMNETWORKINGUTILS_INTERFACE_VERSION = "SteamNetworkingUtils001";
+		internal const string STEAMNETWORKING_INTERFACE_VERSION = "SteamNetworking006";
+		internal const string STEAMNETWORKINGSOCKETS_INTERFACE_VERSION = "SteamNetworkingSockets006";
+		internal const string STEAMNETWORKINGUTILS_INTERFACE_VERSION = "SteamNetworkingUtils003";
 		internal const string STEAMPARENTALSETTINGS_INTERFACE_VERSION = "STEAMPARENTALSETTINGS_INTERFACE_VERSION001";
+		internal const string STEAMREMOTEPLAY_INTERFACE_VERSION = "STEAMREMOTEPLAY_INTERFACE_VERSION001";
 		internal const string STEAMREMOTESTORAGE_INTERFACE_VERSION = "STEAMREMOTESTORAGE_INTERFACE_VERSION014";
 		internal const string STEAMSCREENSHOTS_INTERFACE_VERSION = "STEAMSCREENSHOTS_INTERFACE_VERSION003";
-		internal const string STEAMUGC_INTERFACE_VERSION = "STEAMUGC_INTERFACE_VERSION012";
+		internal const string STEAMUGC_INTERFACE_VERSION = "STEAMUGC_INTERFACE_VERSION014";
 		internal const string STEAMUSER_INTERFACE_VERSION = "SteamUser020";
 		internal const string STEAMUSERSTATS_INTERFACE_VERSION = "STEAMUSERSTATS_INTERFACE_VERSION011";
 		internal const string STEAMUTILS_INTERFACE_VERSION = "SteamUtils009";

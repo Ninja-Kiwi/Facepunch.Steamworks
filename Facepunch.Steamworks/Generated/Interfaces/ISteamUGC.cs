@@ -9,7 +9,7 @@ namespace Steamworks
 {
 	internal class ISteamUGC : SteamInterface
 	{
-		public override string InterfaceName => "STEAMUGC_INTERFACE_VERSION012";
+		public override string InterfaceName => "STEAMUGC_INTERFACE_VERSION014";
 		
 		public override void InitInternals()
 		{
@@ -24,69 +24,72 @@ namespace Steamworks
 			_GetQueryUGCNumAdditionalPreviews = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCNumAdditionalPreviews>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 80 ) ) );
 			_GetQueryUGCAdditionalPreview = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCAdditionalPreview>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 88 ) ) );
 			_GetQueryUGCNumKeyValueTags = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCNumKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 96 ) ) );
-			_GetQueryUGCKeyValueTag = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCKeyValueTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 104 ) ) );
-			_ReleaseQueryUGCRequest = Marshal.GetDelegateForFunctionPointer<FReleaseQueryUGCRequest>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 112 ) ) );
-			_AddRequiredTag = Marshal.GetDelegateForFunctionPointer<FAddRequiredTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 120 ) ) );
-			_AddExcludedTag = Marshal.GetDelegateForFunctionPointer<FAddExcludedTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 128 ) ) );
-			_SetReturnOnlyIDs = Marshal.GetDelegateForFunctionPointer<FSetReturnOnlyIDs>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 136 ) ) );
-			_SetReturnKeyValueTags = Marshal.GetDelegateForFunctionPointer<FSetReturnKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 144 ) ) );
-			_SetReturnLongDescription = Marshal.GetDelegateForFunctionPointer<FSetReturnLongDescription>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 152 ) ) );
-			_SetReturnMetadata = Marshal.GetDelegateForFunctionPointer<FSetReturnMetadata>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 160 ) ) );
-			_SetReturnChildren = Marshal.GetDelegateForFunctionPointer<FSetReturnChildren>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 168 ) ) );
-			_SetReturnAdditionalPreviews = Marshal.GetDelegateForFunctionPointer<FSetReturnAdditionalPreviews>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 176 ) ) );
-			_SetReturnTotalOnly = Marshal.GetDelegateForFunctionPointer<FSetReturnTotalOnly>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 184 ) ) );
-			_SetReturnPlaytimeStats = Marshal.GetDelegateForFunctionPointer<FSetReturnPlaytimeStats>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 192 ) ) );
-			_SetLanguage = Marshal.GetDelegateForFunctionPointer<FSetLanguage>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 200 ) ) );
-			_SetAllowCachedResponse = Marshal.GetDelegateForFunctionPointer<FSetAllowCachedResponse>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 208 ) ) );
-			_SetCloudFileNameFilter = Marshal.GetDelegateForFunctionPointer<FSetCloudFileNameFilter>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 216 ) ) );
-			_SetMatchAnyTag = Marshal.GetDelegateForFunctionPointer<FSetMatchAnyTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 224 ) ) );
-			_SetSearchText = Marshal.GetDelegateForFunctionPointer<FSetSearchText>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 232 ) ) );
-			_SetRankedByTrendDays = Marshal.GetDelegateForFunctionPointer<FSetRankedByTrendDays>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 240 ) ) );
-			_AddRequiredKeyValueTag = Marshal.GetDelegateForFunctionPointer<FAddRequiredKeyValueTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 248 ) ) );
-			_RequestUGCDetails = Marshal.GetDelegateForFunctionPointer<FRequestUGCDetails>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 256 ) ) );
-			_CreateItem = Marshal.GetDelegateForFunctionPointer<FCreateItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 264 ) ) );
-			_StartItemUpdate = Marshal.GetDelegateForFunctionPointer<FStartItemUpdate>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 272 ) ) );
-			_SetItemTitle = Marshal.GetDelegateForFunctionPointer<FSetItemTitle>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 280 ) ) );
-			_SetItemDescription = Marshal.GetDelegateForFunctionPointer<FSetItemDescription>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 288 ) ) );
-			_SetItemUpdateLanguage = Marshal.GetDelegateForFunctionPointer<FSetItemUpdateLanguage>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 296 ) ) );
-			_SetItemMetadata = Marshal.GetDelegateForFunctionPointer<FSetItemMetadata>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 304 ) ) );
-			_SetItemVisibility = Marshal.GetDelegateForFunctionPointer<FSetItemVisibility>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 312 ) ) );
-			_SetItemTags = Marshal.GetDelegateForFunctionPointer<FSetItemTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 320 ) ) );
-			_SetItemContent = Marshal.GetDelegateForFunctionPointer<FSetItemContent>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 328 ) ) );
-			_SetItemPreview = Marshal.GetDelegateForFunctionPointer<FSetItemPreview>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 336 ) ) );
-			_SetAllowLegacyUpload = Marshal.GetDelegateForFunctionPointer<FSetAllowLegacyUpload>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 344 ) ) );
-			_RemoveItemKeyValueTags = Marshal.GetDelegateForFunctionPointer<FRemoveItemKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 352 ) ) );
-			_AddItemKeyValueTag = Marshal.GetDelegateForFunctionPointer<FAddItemKeyValueTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 360 ) ) );
-			_AddItemPreviewFile = Marshal.GetDelegateForFunctionPointer<FAddItemPreviewFile>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 368 ) ) );
-			_AddItemPreviewVideo = Marshal.GetDelegateForFunctionPointer<FAddItemPreviewVideo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 376 ) ) );
-			_UpdateItemPreviewFile = Marshal.GetDelegateForFunctionPointer<FUpdateItemPreviewFile>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 384 ) ) );
-			_UpdateItemPreviewVideo = Marshal.GetDelegateForFunctionPointer<FUpdateItemPreviewVideo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 392 ) ) );
-			_RemoveItemPreview = Marshal.GetDelegateForFunctionPointer<FRemoveItemPreview>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 400 ) ) );
-			_SubmitItemUpdate = Marshal.GetDelegateForFunctionPointer<FSubmitItemUpdate>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 408 ) ) );
-			_GetItemUpdateProgress = Marshal.GetDelegateForFunctionPointer<FGetItemUpdateProgress>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 416 ) ) );
-			_SetUserItemVote = Marshal.GetDelegateForFunctionPointer<FSetUserItemVote>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 424 ) ) );
-			_GetUserItemVote = Marshal.GetDelegateForFunctionPointer<FGetUserItemVote>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 432 ) ) );
-			_AddItemToFavorites = Marshal.GetDelegateForFunctionPointer<FAddItemToFavorites>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 440 ) ) );
-			_RemoveItemFromFavorites = Marshal.GetDelegateForFunctionPointer<FRemoveItemFromFavorites>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 448 ) ) );
-			_SubscribeItem = Marshal.GetDelegateForFunctionPointer<FSubscribeItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 456 ) ) );
-			_UnsubscribeItem = Marshal.GetDelegateForFunctionPointer<FUnsubscribeItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 464 ) ) );
-			_GetNumSubscribedItems = Marshal.GetDelegateForFunctionPointer<FGetNumSubscribedItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 472 ) ) );
-			_GetSubscribedItems = Marshal.GetDelegateForFunctionPointer<FGetSubscribedItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 480 ) ) );
-			_GetItemState = Marshal.GetDelegateForFunctionPointer<FGetItemState>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 488 ) ) );
-			_GetItemInstallInfo = Marshal.GetDelegateForFunctionPointer<FGetItemInstallInfo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 496 ) ) );
-			_GetItemDownloadInfo = Marshal.GetDelegateForFunctionPointer<FGetItemDownloadInfo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 504 ) ) );
-			_DownloadItem = Marshal.GetDelegateForFunctionPointer<FDownloadItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 512 ) ) );
-			_BInitWorkshopForGameServer = Marshal.GetDelegateForFunctionPointer<FBInitWorkshopForGameServer>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 520 ) ) );
-			_SuspendDownloads = Marshal.GetDelegateForFunctionPointer<FSuspendDownloads>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 528 ) ) );
-			_StartPlaytimeTracking = Marshal.GetDelegateForFunctionPointer<FStartPlaytimeTracking>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 536 ) ) );
-			_StopPlaytimeTracking = Marshal.GetDelegateForFunctionPointer<FStopPlaytimeTracking>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 544 ) ) );
-			_StopPlaytimeTrackingForAllItems = Marshal.GetDelegateForFunctionPointer<FStopPlaytimeTrackingForAllItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 552 ) ) );
-			_AddDependency = Marshal.GetDelegateForFunctionPointer<FAddDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 560 ) ) );
-			_RemoveDependency = Marshal.GetDelegateForFunctionPointer<FRemoveDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 568 ) ) );
-			_AddAppDependency = Marshal.GetDelegateForFunctionPointer<FAddAppDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 576 ) ) );
-			_RemoveAppDependency = Marshal.GetDelegateForFunctionPointer<FRemoveAppDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 584 ) ) );
-			_GetAppDependencies = Marshal.GetDelegateForFunctionPointer<FGetAppDependencies>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 592 ) ) );
-			_DeleteItem = Marshal.GetDelegateForFunctionPointer<FDeleteItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 600 ) ) );
+			_GetQueryUGCKeyValueTag1 = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCKeyValueTag1>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 104 ) ) );
+			_GetQueryUGCKeyValueTag2 = Marshal.GetDelegateForFunctionPointer<FGetQueryUGCKeyValueTag2>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 112 ) ) );
+			_ReleaseQueryUGCRequest = Marshal.GetDelegateForFunctionPointer<FReleaseQueryUGCRequest>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 120 ) ) );
+			_AddRequiredTag = Marshal.GetDelegateForFunctionPointer<FAddRequiredTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 128 ) ) );
+			_AddRequiredTagGroup = Marshal.GetDelegateForFunctionPointer<FAddRequiredTagGroup>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 136 ) ) );
+			_AddExcludedTag = Marshal.GetDelegateForFunctionPointer<FAddExcludedTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 144 ) ) );
+			_SetReturnOnlyIDs = Marshal.GetDelegateForFunctionPointer<FSetReturnOnlyIDs>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 152 ) ) );
+			_SetReturnKeyValueTags = Marshal.GetDelegateForFunctionPointer<FSetReturnKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 160 ) ) );
+			_SetReturnLongDescription = Marshal.GetDelegateForFunctionPointer<FSetReturnLongDescription>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 168 ) ) );
+			_SetReturnMetadata = Marshal.GetDelegateForFunctionPointer<FSetReturnMetadata>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 176 ) ) );
+			_SetReturnChildren = Marshal.GetDelegateForFunctionPointer<FSetReturnChildren>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 184 ) ) );
+			_SetReturnAdditionalPreviews = Marshal.GetDelegateForFunctionPointer<FSetReturnAdditionalPreviews>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 192 ) ) );
+			_SetReturnTotalOnly = Marshal.GetDelegateForFunctionPointer<FSetReturnTotalOnly>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 200 ) ) );
+			_SetReturnPlaytimeStats = Marshal.GetDelegateForFunctionPointer<FSetReturnPlaytimeStats>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 208 ) ) );
+			_SetLanguage = Marshal.GetDelegateForFunctionPointer<FSetLanguage>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 216 ) ) );
+			_SetAllowCachedResponse = Marshal.GetDelegateForFunctionPointer<FSetAllowCachedResponse>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 224 ) ) );
+			_SetCloudFileNameFilter = Marshal.GetDelegateForFunctionPointer<FSetCloudFileNameFilter>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 232 ) ) );
+			_SetMatchAnyTag = Marshal.GetDelegateForFunctionPointer<FSetMatchAnyTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 240 ) ) );
+			_SetSearchText = Marshal.GetDelegateForFunctionPointer<FSetSearchText>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 248 ) ) );
+			_SetRankedByTrendDays = Marshal.GetDelegateForFunctionPointer<FSetRankedByTrendDays>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 256 ) ) );
+			_AddRequiredKeyValueTag = Marshal.GetDelegateForFunctionPointer<FAddRequiredKeyValueTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 264 ) ) );
+			_RequestUGCDetails = Marshal.GetDelegateForFunctionPointer<FRequestUGCDetails>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 272 ) ) );
+			_CreateItem = Marshal.GetDelegateForFunctionPointer<FCreateItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 280 ) ) );
+			_StartItemUpdate = Marshal.GetDelegateForFunctionPointer<FStartItemUpdate>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 288 ) ) );
+			_SetItemTitle = Marshal.GetDelegateForFunctionPointer<FSetItemTitle>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 296 ) ) );
+			_SetItemDescription = Marshal.GetDelegateForFunctionPointer<FSetItemDescription>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 304 ) ) );
+			_SetItemUpdateLanguage = Marshal.GetDelegateForFunctionPointer<FSetItemUpdateLanguage>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 312 ) ) );
+			_SetItemMetadata = Marshal.GetDelegateForFunctionPointer<FSetItemMetadata>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 320 ) ) );
+			_SetItemVisibility = Marshal.GetDelegateForFunctionPointer<FSetItemVisibility>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 328 ) ) );
+			_SetItemTags = Marshal.GetDelegateForFunctionPointer<FSetItemTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 336 ) ) );
+			_SetItemContent = Marshal.GetDelegateForFunctionPointer<FSetItemContent>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 344 ) ) );
+			_SetItemPreview = Marshal.GetDelegateForFunctionPointer<FSetItemPreview>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 352 ) ) );
+			_SetAllowLegacyUpload = Marshal.GetDelegateForFunctionPointer<FSetAllowLegacyUpload>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 360 ) ) );
+			_RemoveAllItemKeyValueTags = Marshal.GetDelegateForFunctionPointer<FRemoveAllItemKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 368 ) ) );
+			_RemoveItemKeyValueTags = Marshal.GetDelegateForFunctionPointer<FRemoveItemKeyValueTags>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 376 ) ) );
+			_AddItemKeyValueTag = Marshal.GetDelegateForFunctionPointer<FAddItemKeyValueTag>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 384 ) ) );
+			_AddItemPreviewFile = Marshal.GetDelegateForFunctionPointer<FAddItemPreviewFile>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 392 ) ) );
+			_AddItemPreviewVideo = Marshal.GetDelegateForFunctionPointer<FAddItemPreviewVideo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 400 ) ) );
+			_UpdateItemPreviewFile = Marshal.GetDelegateForFunctionPointer<FUpdateItemPreviewFile>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 408 ) ) );
+			_UpdateItemPreviewVideo = Marshal.GetDelegateForFunctionPointer<FUpdateItemPreviewVideo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 416 ) ) );
+			_RemoveItemPreview = Marshal.GetDelegateForFunctionPointer<FRemoveItemPreview>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 424 ) ) );
+			_SubmitItemUpdate = Marshal.GetDelegateForFunctionPointer<FSubmitItemUpdate>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 432 ) ) );
+			_GetItemUpdateProgress = Marshal.GetDelegateForFunctionPointer<FGetItemUpdateProgress>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 440 ) ) );
+			_SetUserItemVote = Marshal.GetDelegateForFunctionPointer<FSetUserItemVote>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 448 ) ) );
+			_GetUserItemVote = Marshal.GetDelegateForFunctionPointer<FGetUserItemVote>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 456 ) ) );
+			_AddItemToFavorites = Marshal.GetDelegateForFunctionPointer<FAddItemToFavorites>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 464 ) ) );
+			_RemoveItemFromFavorites = Marshal.GetDelegateForFunctionPointer<FRemoveItemFromFavorites>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 472 ) ) );
+			_SubscribeItem = Marshal.GetDelegateForFunctionPointer<FSubscribeItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 480 ) ) );
+			_UnsubscribeItem = Marshal.GetDelegateForFunctionPointer<FUnsubscribeItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 488 ) ) );
+			_GetNumSubscribedItems = Marshal.GetDelegateForFunctionPointer<FGetNumSubscribedItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 496 ) ) );
+			_GetSubscribedItems = Marshal.GetDelegateForFunctionPointer<FGetSubscribedItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 504 ) ) );
+			_GetItemState = Marshal.GetDelegateForFunctionPointer<FGetItemState>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 512 ) ) );
+			_GetItemInstallInfo = Marshal.GetDelegateForFunctionPointer<FGetItemInstallInfo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 520 ) ) );
+			_GetItemDownloadInfo = Marshal.GetDelegateForFunctionPointer<FGetItemDownloadInfo>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 528 ) ) );
+			_DownloadItem = Marshal.GetDelegateForFunctionPointer<FDownloadItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 536 ) ) );
+			_BInitWorkshopForGameServer = Marshal.GetDelegateForFunctionPointer<FBInitWorkshopForGameServer>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 544 ) ) );
+			_SuspendDownloads = Marshal.GetDelegateForFunctionPointer<FSuspendDownloads>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 552 ) ) );
+			_StartPlaytimeTracking = Marshal.GetDelegateForFunctionPointer<FStartPlaytimeTracking>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 560 ) ) );
+			_StopPlaytimeTracking = Marshal.GetDelegateForFunctionPointer<FStopPlaytimeTracking>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 568 ) ) );
+			_StopPlaytimeTrackingForAllItems = Marshal.GetDelegateForFunctionPointer<FStopPlaytimeTrackingForAllItems>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 576 ) ) );
+			_AddDependency = Marshal.GetDelegateForFunctionPointer<FAddDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 584 ) ) );
+			_RemoveDependency = Marshal.GetDelegateForFunctionPointer<FRemoveDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 592 ) ) );
+			_AddAppDependency = Marshal.GetDelegateForFunctionPointer<FAddAppDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 600 ) ) );
+			_RemoveAppDependency = Marshal.GetDelegateForFunctionPointer<FRemoveAppDependency>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 608 ) ) );
+			_GetAppDependencies = Marshal.GetDelegateForFunctionPointer<FGetAppDependencies>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 616 ) ) );
+			_DeleteItem = Marshal.GetDelegateForFunctionPointer<FDeleteItem>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 624 ) ) );
 			
 			#if PLATFORM_WIN
 			_CreateQueryAllUGCRequest1 = Marshal.GetDelegateForFunctionPointer<FCreateQueryAllUGCRequest1>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 16 ) ) );
@@ -113,9 +116,11 @@ namespace Steamworks
 			_GetQueryUGCNumAdditionalPreviews = null;
 			_GetQueryUGCAdditionalPreview = null;
 			_GetQueryUGCNumKeyValueTags = null;
-			_GetQueryUGCKeyValueTag = null;
+			_GetQueryUGCKeyValueTag1 = null;
+			_GetQueryUGCKeyValueTag2 = null;
 			_ReleaseQueryUGCRequest = null;
 			_AddRequiredTag = null;
+			_AddRequiredTagGroup = null;
 			_AddExcludedTag = null;
 			_SetReturnOnlyIDs = null;
 			_SetReturnKeyValueTags = null;
@@ -144,6 +149,7 @@ namespace Steamworks
 			_SetItemContent = null;
 			_SetItemPreview = null;
 			_SetAllowLegacyUpload = null;
+			_RemoveAllItemKeyValueTags = null;
 			_RemoveItemKeyValueTags = null;
 			_AddItemKeyValueTag = null;
 			_AddItemPreviewFile = null;
@@ -351,16 +357,31 @@ namespace Steamworks
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
 		[return: MarshalAs( UnmanagedType.I1 )]
-		private delegate bool FGetQueryUGCKeyValueTag( IntPtr self, UGCQueryHandle_t handle, uint index, uint keyValueTagIndex, IntPtr pchKey, uint cchKeySize, IntPtr pchValue, uint cchValueSize );
-		private FGetQueryUGCKeyValueTag _GetQueryUGCKeyValueTag;
+		private delegate bool FGetQueryUGCKeyValueTag1( IntPtr self, UGCQueryHandle_t handle, uint index, uint keyValueTagIndex, IntPtr pchKey, uint cchKeySize, IntPtr pchValue, uint cchValueSize );
+		private FGetQueryUGCKeyValueTag1 _GetQueryUGCKeyValueTag1;
 		
 		#endregion
-		internal bool GetQueryUGCKeyValueTag( UGCQueryHandle_t handle, uint index, uint keyValueTagIndex, out string pchKey, out string pchValue )
+		internal bool GetQueryUGCKeyValueTag1( UGCQueryHandle_t handle, uint index, uint keyValueTagIndex, out string pchKey, out string pchValue )
 		{
 			IntPtr mempchKey = Helpers.TakeMemory();
 			IntPtr mempchValue = Helpers.TakeMemory();
-			var returnValue = _GetQueryUGCKeyValueTag( Self, handle, index, keyValueTagIndex, mempchKey, (1024 * 32), mempchValue, (1024 * 32) );
+			var returnValue = _GetQueryUGCKeyValueTag1( Self, handle, index, keyValueTagIndex, mempchKey, (1024 * 32), mempchValue, (1024 * 32) );
 			pchKey = Helpers.MemoryToString( mempchKey );
+			pchValue = Helpers.MemoryToString( mempchValue );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FGetQueryUGCKeyValueTag2( IntPtr self, UGCQueryHandle_t handle, uint index, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchKey, IntPtr pchValue, uint cchValueSize );
+		private FGetQueryUGCKeyValueTag2 _GetQueryUGCKeyValueTag2;
+		
+		#endregion
+		internal bool GetQueryUGCKeyValueTag2( UGCQueryHandle_t handle, uint index, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchKey, out string pchValue )
+		{
+			IntPtr mempchValue = Helpers.TakeMemory();
+			var returnValue = _GetQueryUGCKeyValueTag2( Self, handle, index, pchKey, mempchValue, (1024 * 32) );
 			pchValue = Helpers.MemoryToString( mempchValue );
 			return returnValue;
 		}
@@ -388,6 +409,19 @@ namespace Steamworks
 		internal bool AddRequiredTag( UGCQueryHandle_t handle, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pTagName )
 		{
 			var returnValue = _AddRequiredTag( Self, handle, pTagName );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FAddRequiredTagGroup( IntPtr self, UGCQueryHandle_t handle, ref SteamParamStringArray_t pTagGroups );
+		private FAddRequiredTagGroup _AddRequiredTagGroup;
+		
+		#endregion
+		internal bool AddRequiredTagGroup( UGCQueryHandle_t handle, ref SteamParamStringArray_t pTagGroups )
+		{
+			var returnValue = _AddRequiredTagGroup( Self, handle, ref pTagGroups );
 			return returnValue;
 		}
 		
@@ -749,6 +783,19 @@ namespace Steamworks
 		internal bool SetAllowLegacyUpload( UGCUpdateHandle_t handle, [MarshalAs( UnmanagedType.U1 )] bool bAllowLegacyUpload )
 		{
 			var returnValue = _SetAllowLegacyUpload( Self, handle, bAllowLegacyUpload );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FRemoveAllItemKeyValueTags( IntPtr self, UGCUpdateHandle_t handle );
+		private FRemoveAllItemKeyValueTags _RemoveAllItemKeyValueTags;
+		
+		#endregion
+		internal bool RemoveAllItemKeyValueTags( UGCUpdateHandle_t handle )
+		{
+			var returnValue = _RemoveAllItemKeyValueTags( Self, handle );
 			return returnValue;
 		}
 		

@@ -9,7 +9,7 @@ namespace Steamworks
 {
 	internal class ISteamGameServer : SteamInterface
 	{
-		public override string InterfaceName => "SteamGameServer012";
+		public override string InterfaceName => "SteamGameServer013";
 		
 		public override void InitInternals()
 		{
@@ -546,11 +546,11 @@ namespace Steamworks
 		
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
-		private delegate uint FGetPublicIP( IntPtr self );
+		private delegate SteamIPAddress_t FGetPublicIP( IntPtr self );
 		private FGetPublicIP _GetPublicIP;
 		
 		#endregion
-		internal uint GetPublicIP()
+		internal SteamIPAddress_t GetPublicIP()
 		{
 			var returnValue = _GetPublicIP( Self );
 			return returnValue;

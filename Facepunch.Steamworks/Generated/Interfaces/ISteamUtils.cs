@@ -43,6 +43,10 @@ namespace Steamworks
 			_StartVRDashboard = Marshal.GetDelegateForFunctionPointer<FStartVRDashboard>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 216 ) ) );
 			_IsVRHeadsetStreamingEnabled = Marshal.GetDelegateForFunctionPointer<FIsVRHeadsetStreamingEnabled>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 224 ) ) );
 			_SetVRHeadsetStreamingEnabled = Marshal.GetDelegateForFunctionPointer<FSetVRHeadsetStreamingEnabled>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 232 ) ) );
+			_IsSteamChinaLauncher = Marshal.GetDelegateForFunctionPointer<FIsSteamChinaLauncher>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 240 ) ) );
+			_InitFilterText = Marshal.GetDelegateForFunctionPointer<FInitFilterText>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 248 ) ) );
+			_FilterText = Marshal.GetDelegateForFunctionPointer<FFilterText>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 256 ) ) );
+			_GetIPv6ConnectivityState = Marshal.GetDelegateForFunctionPointer<FGetIPv6ConnectivityState>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 264 ) ) );
 		}
 		internal override void Shutdown()
 		{
@@ -78,6 +82,10 @@ namespace Steamworks
 			_StartVRDashboard = null;
 			_IsVRHeadsetStreamingEnabled = null;
 			_SetVRHeadsetStreamingEnabled = null;
+			_IsSteamChinaLauncher = null;
+			_InitFilterText = null;
+			_FilterText = null;
+			_GetIPv6ConnectivityState = null;
 		}
 		
 		#region FunctionMeta
@@ -446,6 +454,56 @@ namespace Steamworks
 		internal void SetVRHeadsetStreamingEnabled( [MarshalAs( UnmanagedType.U1 )] bool bEnabled )
 		{
 			_SetVRHeadsetStreamingEnabled( Self, bEnabled );
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FIsSteamChinaLauncher( IntPtr self );
+		private FIsSteamChinaLauncher _IsSteamChinaLauncher;
+		
+		#endregion
+		internal bool IsSteamChinaLauncher()
+		{
+			var returnValue = _IsSteamChinaLauncher( Self );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FInitFilterText( IntPtr self );
+		private FInitFilterText _InitFilterText;
+		
+		#endregion
+		internal bool InitFilterText()
+		{
+			var returnValue = _InitFilterText( Self );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		private delegate int FFilterText( IntPtr self, ref char pchOutFilteredText, uint nByteSizeOutFilteredText, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, [MarshalAs( UnmanagedType.U1 )] bool bLegalOnly );
+		private FFilterText _FilterText;
+		
+		#endregion
+		internal int FilterText( ref char pchOutFilteredText, uint nByteSizeOutFilteredText, [MarshalAs( UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof( Utf8StringToNative ) )] string pchInputMessage, [MarshalAs( UnmanagedType.U1 )] bool bLegalOnly )
+		{
+			var returnValue = _FilterText( Self, ref pchOutFilteredText, nByteSizeOutFilteredText, pchInputMessage, bLegalOnly );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		private delegate SteamIPv6ConnectivityState FGetIPv6ConnectivityState( IntPtr self, SteamIPv6ConnectivityProtocol eProtocol );
+		private FGetIPv6ConnectivityState _GetIPv6ConnectivityState;
+		
+		#endregion
+		internal SteamIPv6ConnectivityState GetIPv6ConnectivityState( SteamIPv6ConnectivityProtocol eProtocol )
+		{
+			var returnValue = _GetIPv6ConnectivityState( Self, eProtocol );
+			return returnValue;
 		}
 		
 	}

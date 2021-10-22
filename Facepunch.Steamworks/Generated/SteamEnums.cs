@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 namespace Steamworks
 {
 	//
+	// ESteamIPType
+	//
+	internal enum SteamIPType : int
+	{
+		SteamIPType4 = 0,
+		SteamIPType6 = 1,
+	}
+	
+	//
 	// EUniverse
 	//
 	public enum Universe : int
@@ -24,6 +33,7 @@ namespace Steamworks
 	//
 	public enum Result : int
 	{
+		None = 0,
 		OK = 1,
 		Fail = 2,
 		NoConnection = 3,
@@ -274,6 +284,8 @@ namespace Steamworks
 		RentalNotActivated = 65536,
 		Rental = 131072,
 		SiteLicense = 262144,
+		LegacyFreeSub = 524288,
+		InvalidOSType = 1048576,
 	}
 	
 	//
@@ -295,9 +307,10 @@ namespace Steamworks
 		Franchise = 1024,
 		Video = 2048,
 		Plugin = 4096,
-		Music = 8192,
+		MusicAlbum = 8192,
 		Series = 16384,
-		Comic = 32768,
+		Comic_UNUSED = 32768,
+		Beta = 65536,
 		Shortcut = 1073741824,
 		DepotOnly = -2147483648,
 	}
@@ -449,33 +462,38 @@ namespace Steamworks
 	//
 	internal enum VRHMDType : int
 	{
-		None = -1,
-		Unknown = 0,
-		HTC_Dev = 1,
-		HTC_VivePre = 2,
-		HTC_Vive = 3,
-		HTC_VivePro = 4,
-		HTC_Unknown = 20,
-		Oculus_DK1 = 21,
-		Oculus_DK2 = 22,
-		Oculus_Rift = 23,
-		Oculus_Unknown = 40,
-		Acer_Unknown = 50,
-		Acer_WindowsMR = 51,
-		Dell_Unknown = 60,
-		Dell_Visor = 61,
-		Lenovo_Unknown = 70,
-		Lenovo_Explorer = 71,
-		HP_Unknown = 80,
-		HP_WindowsMR = 81,
-		Samsung_Unknown = 90,
-		Samsung_Odyssey = 91,
-		Unannounced_Unknown = 100,
-		Unannounced_WindowsMR = 101,
-		vridge = 110,
-		Huawei_Unknown = 120,
-		Huawei_VR2 = 121,
-		Huawei_Unannounced = 129,
+		MDType_None = -1,
+		MDType_Unknown = 0,
+		MDType_HTC_Dev = 1,
+		MDType_HTC_VivePre = 2,
+		MDType_HTC_Vive = 3,
+		MDType_HTC_VivePro = 4,
+		MDType_HTC_ViveCosmos = 5,
+		MDType_HTC_Unknown = 20,
+		MDType_Oculus_DK1 = 21,
+		MDType_Oculus_DK2 = 22,
+		MDType_Oculus_Rift = 23,
+		MDType_Oculus_RiftS = 24,
+		MDType_Oculus_Unknown = 40,
+		MDType_Acer_Unknown = 50,
+		MDType_Acer_WindowsMR = 51,
+		MDType_Dell_Unknown = 60,
+		MDType_Dell_Visor = 61,
+		MDType_Lenovo_Unknown = 70,
+		MDType_Lenovo_Explorer = 71,
+		MDType_HP_Unknown = 80,
+		MDType_HP_WindowsMR = 81,
+		MDType_HP_Reverb = 82,
+		MDType_Samsung_Unknown = 90,
+		MDType_Samsung_Odyssey = 91,
+		MDType_Unannounced_Unknown = 100,
+		MDType_Unannounced_WindowsMR = 101,
+		MDType_vridge = 110,
+		MDType_Huawei_Unknown = 120,
+		MDType_Huawei_VR2 = 121,
+		MDType_Huawei_EndOfRange = 129,
+		mdType_Valve_Unknown = 130,
+		mdType_Valve_Index = 131,
 	}
 	
 	//
@@ -500,6 +518,34 @@ namespace Steamworks
 		NewPaymentMethodCannotBeVerified = 8192,
 		NoRecentPurchases = 16384,
 		AcceptedWalletGift = 32768,
+	}
+	
+	//
+	// EDurationControlProgress
+	//
+	internal enum DurationControlProgress : int
+	{
+		Progress_Full = 0,
+		Progress_Half = 1,
+		Progress_None = 2,
+		_ExitSoon_3h = 3,
+		_ExitSoon_5h = 4,
+		_ExitSoon_Night = 5,
+	}
+	
+	//
+	// EDurationControlNotification
+	//
+	internal enum DurationControlNotification : int
+	{
+		None = 0,
+		DurationControlNotification1Hour = 1,
+		DurationControlNotification3Hours = 2,
+		HalfProgress = 3,
+		NoProgress = 4,
+		ExitSoon_3h = 5,
+		ExitSoon_5h = 6,
+		ExitSoon_Night = 7,
 	}
 	
 	//
@@ -539,6 +585,26 @@ namespace Steamworks
 		Kicked = 3,
 		Incomplete = 4,
 		Completed = 5,
+	}
+	
+	//
+	// ESteamIPv6ConnectivityProtocol
+	//
+	internal enum SteamIPv6ConnectivityProtocol : int
+	{
+		Invalid = 0,
+		HTTP = 1,
+		UDP = 2,
+	}
+	
+	//
+	// ESteamIPv6ConnectivityState
+	//
+	internal enum SteamIPv6ConnectivityState : int
+	{
+		Unknown = 0,
+		Good = 1,
+		Bad = 2,
 	}
 	
 	//
@@ -718,6 +784,7 @@ namespace Steamworks
 		FriendsOnly = 1,
 		Public = 2,
 		Invisible = 3,
+		PrivateUnique = 4,
 	}
 	
 	//
@@ -798,8 +865,9 @@ namespace Steamworks
 		OSX = 2,
 		PS3 = 4,
 		Linux = 8,
-		Reserved2 = 16,
+		Switch = 16,
 		Android = 32,
+		IOS = 64,
 		All = -1,
 	}
 	
@@ -1229,7 +1297,7 @@ namespace Steamworks
 		PS4_Gyro_Pitch = 100,
 		PS4_Gyro_Yaw = 101,
 		PS4_Gyro_Roll = 102,
-		PS4_Reserved0 = 103,
+		PS4_DPad_Move = 103,
 		PS4_Reserved1 = 104,
 		PS4_Reserved2 = 105,
 		PS4_Reserved3 = 106,
@@ -1268,7 +1336,7 @@ namespace Steamworks
 		XBoxOne_DPad_South = 139,
 		XBoxOne_DPad_West = 140,
 		XBoxOne_DPad_East = 141,
-		XBoxOne_Reserved0 = 142,
+		XBoxOne_DPad_Move = 142,
 		XBoxOne_Reserved1 = 143,
 		XBoxOne_Reserved2 = 144,
 		XBoxOne_Reserved3 = 145,
@@ -1307,7 +1375,7 @@ namespace Steamworks
 		XBox360_DPad_South = 178,
 		XBox360_DPad_West = 179,
 		XBox360_DPad_East = 180,
-		XBox360_Reserved0 = 181,
+		XBox360_DPad_Move = 181,
 		XBox360_Reserved1 = 182,
 		XBox360_Reserved2 = 183,
 		XBox360_Reserved3 = 184,
@@ -1351,7 +1419,7 @@ namespace Steamworks
 		Switch_ProGyro_Pitch = 222,
 		Switch_ProGyro_Yaw = 223,
 		Switch_ProGyro_Roll = 224,
-		Switch_Reserved0 = 225,
+		Switch_DPad_Move = 225,
 		Switch_Reserved1 = 226,
 		Switch_Reserved2 = 227,
 		Switch_Reserved3 = 228,
@@ -1759,7 +1827,11 @@ namespace Steamworks
 		Switch_LeftGrip_Upper = 238,
 		Switch_RightGrip_Lower = 239,
 		Switch_RightGrip_Upper = 240,
-		Count = 241,
+		PS4_DPad_Move = 241,
+		XBoxOne_DPad_Move = 242,
+		XBox360_DPad_Move = 243,
+		Switch_DPad_Move = 244,
+		Count = 245,
 		MaximumPossibleValue = 32767,
 	}
 	
@@ -1990,6 +2062,17 @@ namespace Steamworks
 	}
 	
 	//
+	// ESteamTVRegionBehavior
+	//
+	internal enum SteamTVRegionBehavior : int
+	{
+		Invalid = -1,
+		Hover = 0,
+		ClickPopup = 1,
+		ClickSurroundingRegion = 2,
+	}
+	
+	//
 	// EParentalFeature
 	//
 	public enum ParentalFeature : int
@@ -2008,6 +2091,18 @@ namespace Steamworks
 		Library = 11,
 		Test = 12,
 		Max = 13,
+	}
+	
+	//
+	// ESteamDeviceFormFactor
+	//
+	internal enum SteamDeviceFormFactor : int
+	{
+		Unknown = 0,
+		Phone = 1,
+		Tablet = 2,
+		Computer = 3,
+		TV = 4,
 	}
 	
 }

@@ -46,6 +46,8 @@ namespace Steamworks
 			_GetGlyphForXboxOrigin = Marshal.GetDelegateForFunctionPointer<FGetGlyphForXboxOrigin>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 240 ) ) );
 			_GetActionOriginFromXboxOrigin = Marshal.GetDelegateForFunctionPointer<FGetActionOriginFromXboxOrigin>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 248 ) ) );
 			_TranslateActionOrigin = Marshal.GetDelegateForFunctionPointer<FTranslateActionOrigin>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 256 ) ) );
+			_GetDeviceBindingRevision = Marshal.GetDelegateForFunctionPointer<FGetDeviceBindingRevision>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 264 ) ) );
+			_GetRemotePlaySessionID = Marshal.GetDelegateForFunctionPointer<FGetRemotePlaySessionID>( Marshal.ReadIntPtr( VTable, Platform.MemoryOffset( 272 ) ) );
 		}
 		internal override void Shutdown()
 		{
@@ -84,6 +86,8 @@ namespace Steamworks
 			_GetGlyphForXboxOrigin = null;
 			_GetActionOriginFromXboxOrigin = null;
 			_TranslateActionOrigin = null;
+			_GetDeviceBindingRevision = null;
+			_GetRemotePlaySessionID = null;
 		}
 		
 		#region FunctionMeta
@@ -502,6 +506,31 @@ namespace Steamworks
 		internal InputActionOrigin TranslateActionOrigin( InputType eDestinationInputType, InputActionOrigin eSourceOrigin )
 		{
 			var returnValue = _TranslateActionOrigin( Self, eDestinationInputType, eSourceOrigin );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		[return: MarshalAs( UnmanagedType.I1 )]
+		private delegate bool FGetDeviceBindingRevision( IntPtr self, InputHandle_t inputHandle, ref int pMajor, ref int pMinor );
+		private FGetDeviceBindingRevision _GetDeviceBindingRevision;
+		
+		#endregion
+		internal bool GetDeviceBindingRevision( InputHandle_t inputHandle, ref int pMajor, ref int pMinor )
+		{
+			var returnValue = _GetDeviceBindingRevision( Self, inputHandle, ref pMajor, ref pMinor );
+			return returnValue;
+		}
+		
+		#region FunctionMeta
+		[UnmanagedFunctionPointer( Platform.MemberConvention )]
+		private delegate uint FGetRemotePlaySessionID( IntPtr self, InputHandle_t inputHandle );
+		private FGetRemotePlaySessionID _GetRemotePlaySessionID;
+		
+		#endregion
+		internal uint GetRemotePlaySessionID( InputHandle_t inputHandle )
+		{
+			var returnValue = _GetRemotePlaySessionID( Self, inputHandle );
 			return returnValue;
 		}
 		

@@ -9,7 +9,7 @@ namespace Steamworks
 {
 	internal class ISteamNetworking : SteamInterface
 	{
-		public override string InterfaceName => "SteamNetworking005";
+		public override string InterfaceName => "SteamNetworking006";
 		
 		public override void InitInternals()
 		{
@@ -170,11 +170,11 @@ namespace Steamworks
 		
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
-		private delegate SNetListenSocket_t FCreateListenSocket( IntPtr self, int nVirtualP2PPort, uint nIP, ushort nPort, [MarshalAs( UnmanagedType.U1 )] bool bAllowUseOfPacketRelay );
+		private delegate SNetListenSocket_t FCreateListenSocket( IntPtr self, int nVirtualP2PPort, SteamIPAddress_t nIP, ushort nPort, [MarshalAs( UnmanagedType.U1 )] bool bAllowUseOfPacketRelay );
 		private FCreateListenSocket _CreateListenSocket;
 		
 		#endregion
-		internal SNetListenSocket_t CreateListenSocket( int nVirtualP2PPort, uint nIP, ushort nPort, [MarshalAs( UnmanagedType.U1 )] bool bAllowUseOfPacketRelay )
+		internal SNetListenSocket_t CreateListenSocket( int nVirtualP2PPort, SteamIPAddress_t nIP, ushort nPort, [MarshalAs( UnmanagedType.U1 )] bool bAllowUseOfPacketRelay )
 		{
 			var returnValue = _CreateListenSocket( Self, nVirtualP2PPort, nIP, nPort, bAllowUseOfPacketRelay );
 			return returnValue;
@@ -194,11 +194,11 @@ namespace Steamworks
 		
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
-		private delegate SNetSocket_t FCreateConnectionSocket( IntPtr self, uint nIP, ushort nPort, int nTimeoutSec );
+		private delegate SNetSocket_t FCreateConnectionSocket( IntPtr self, SteamIPAddress_t nIP, ushort nPort, int nTimeoutSec );
 		private FCreateConnectionSocket _CreateConnectionSocket;
 		
 		#endregion
-		internal SNetSocket_t CreateConnectionSocket( uint nIP, ushort nPort, int nTimeoutSec )
+		internal SNetSocket_t CreateConnectionSocket( SteamIPAddress_t nIP, ushort nPort, int nTimeoutSec )
 		{
 			var returnValue = _CreateConnectionSocket( Self, nIP, nPort, nTimeoutSec );
 			return returnValue;
@@ -298,11 +298,11 @@ namespace Steamworks
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
 		[return: MarshalAs( UnmanagedType.I1 )]
-		private delegate bool FGetSocketInfo( IntPtr self, SNetSocket_t hSocket, ref SteamId pSteamIDRemote, ref int peSocketStatus, ref uint punIPRemote, ref ushort punPortRemote );
+		private delegate bool FGetSocketInfo( IntPtr self, SNetSocket_t hSocket, ref SteamId pSteamIDRemote, ref int peSocketStatus, ref SteamIPAddress_t punIPRemote, ref ushort punPortRemote );
 		private FGetSocketInfo _GetSocketInfo;
 		
 		#endregion
-		internal bool GetSocketInfo( SNetSocket_t hSocket, ref SteamId pSteamIDRemote, ref int peSocketStatus, ref uint punIPRemote, ref ushort punPortRemote )
+		internal bool GetSocketInfo( SNetSocket_t hSocket, ref SteamId pSteamIDRemote, ref int peSocketStatus, ref SteamIPAddress_t punIPRemote, ref ushort punPortRemote )
 		{
 			var returnValue = _GetSocketInfo( Self, hSocket, ref pSteamIDRemote, ref peSocketStatus, ref punIPRemote, ref punPortRemote );
 			return returnValue;
@@ -311,11 +311,11 @@ namespace Steamworks
 		#region FunctionMeta
 		[UnmanagedFunctionPointer( Platform.MemberConvention )]
 		[return: MarshalAs( UnmanagedType.I1 )]
-		private delegate bool FGetListenSocketInfo( IntPtr self, SNetListenSocket_t hListenSocket, ref uint pnIP, ref ushort pnPort );
+		private delegate bool FGetListenSocketInfo( IntPtr self, SNetListenSocket_t hListenSocket, ref SteamIPAddress_t pnIP, ref ushort pnPort );
 		private FGetListenSocketInfo _GetListenSocketInfo;
 		
 		#endregion
-		internal bool GetListenSocketInfo( SNetListenSocket_t hListenSocket, ref uint pnIP, ref ushort pnPort )
+		internal bool GetListenSocketInfo( SNetListenSocket_t hListenSocket, ref SteamIPAddress_t pnIP, ref ushort pnPort )
 		{
 			var returnValue = _GetListenSocketInfo( Self, hListenSocket, ref pnIP, ref pnPort );
 			return returnValue;

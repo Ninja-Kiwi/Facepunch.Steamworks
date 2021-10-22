@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 namespace Steamworks.Data
 {
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct SteamIPAddress_t
+	{
+		internal SteamIPType Type; // m_eType enum ESteamIPType
+		
+		#region Marshalling
+		internal static SteamIPAddress_t Fill( IntPtr p ) => ((SteamIPAddress_t)(SteamIPAddress_t) Marshal.PtrToStructure( p, typeof(SteamIPAddress_t) ) );
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct CallbackMsg_t
 	{
 		internal int SteamUser; // m_hSteamUser HSteamUser
@@ -567,6 +577,68 @@ namespace Steamworks.Data
 			try
 			{
 				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUser + 66, ref failed ) || failed )
+					return null;
+			
+				return Fill( ptr );
+			}
+			finally
+			{
+				Marshal.FreeHGlobal( ptr );
+			}
+		}
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct DurationControl_t
+	{
+		internal Result Result; // m_eResult enum EResult
+		internal AppId Appid; // m_appid AppId_t
+		[MarshalAs(UnmanagedType.I1)]
+		internal bool Applicable; // m_bApplicable _Bool
+		internal int CsecsLast5h; // m_csecsLast5h int32
+		internal DurationControlProgress Progress; // m_progress enum EDurationControlProgress
+		internal DurationControlNotification Otification; // m_notification enum EDurationControlNotification
+		internal int CsecsToday; // m_csecsToday int32
+		internal int CsecsRemaining; // m_csecsRemaining int32
+		
+		#region SteamCallback
+		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DurationControl_t) );
+		internal static DurationControl_t Fill( IntPtr p ) => ((DurationControl_t)(DurationControl_t) Marshal.PtrToStructure( p, typeof(DurationControl_t) ) );
+		
+		static Action<DurationControl_t> actionClient;
+		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
+		static Action<DurationControl_t> actionServer;
+		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
+		public static void Install( Action<DurationControl_t> action, bool server = false )
+		{
+			if ( server )
+			{
+				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUser + 67, true );
+				actionServer = action;
+			}
+			else
+			{
+				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUser + 67, false );
+				actionClient = action;
+			}
+		}
+		public static async Task<DurationControl_t?> GetResultAsync( SteamAPICall_t handle )
+		{
+			bool failed = false;
+			
+			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
+			{
+				await Task.Delay( 1 );
+				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
+			}
+			if ( failed ) return null;
+			
+			var ptr = Marshal.AllocHGlobal( StructSize );
+			
+			try
+			{
+				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUser + 67, ref failed ) || failed )
 					return null;
 			
 				return Fill( ptr );
@@ -2758,7 +2830,7 @@ namespace Steamworks.Data
 		internal ulong LSearchID; // m_ullSearchID uint64
 		internal ulong SteamIDPlayerFound; // m_SteamIDPlayerFound class CSteamID
 		internal ulong SteamIDLobby; // m_SteamIDLobby class CSteamID
-		internal PlayerAcceptState_t PlayerAcceptState; // m_ePlayerAcceptState PlayerAcceptState_t
+		internal RequestPlayersForGameResultCallback_t::PlayerAcceptState_t PlayerAcceptState; // m_ePlayerAcceptState enum RequestPlayersForGameResultCallback_t::PlayerAcceptState_t
 		internal int PlayerIndex; // m_nPlayerIndex int32
 		internal int TotalPlayersFound; // m_nTotalPlayersFound int32
 		internal int TotalPlayersAcceptedGame; // m_nTotalPlayersAcceptedGame int32
@@ -9138,60 +9210,6 @@ namespace Steamworks.Data
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct BroadcastUploadStop_t
-	{
-		internal BroadcastUploadResult Result; // m_eResult enum EBroadcastUploadResult
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(BroadcastUploadStop_t) );
-		internal static BroadcastUploadStop_t Fill( IntPtr p ) => ((BroadcastUploadStop_t)(BroadcastUploadStop_t) Marshal.PtrToStructure( p, typeof(BroadcastUploadStop_t) ) );
-		
-		static Action<BroadcastUploadStop_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<BroadcastUploadStop_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<BroadcastUploadStop_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.ClientVideo + 5, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.ClientVideo + 5, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<BroadcastUploadStop_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.ClientVideo + 5, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct GetVideoURLResult_t
 	{
 		internal Result Result; // m_eResult enum EResult
@@ -9292,6 +9310,148 @@ namespace Steamworks.Data
 			try
 			{
 				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.ClientVideo + 24, ref failed ) || failed )
+					return null;
+			
+				return Fill( ptr );
+			}
+			finally
+			{
+				Marshal.FreeHGlobal( ptr );
+			}
+		}
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct SteamTVRegion_t
+	{
+		internal uint UnMinX; // unMinX uint32
+		internal uint UnMinY; // unMinY uint32
+		internal uint UnMaxX; // unMaxX uint32
+		internal uint UnMaxY; // unMaxY uint32
+		
+		#region Marshalling
+		internal static SteamTVRegion_t Fill( IntPtr p ) => ((SteamTVRegion_t)(SteamTVRegion_t) Marshal.PtrToStructure( p, typeof(SteamTVRegion_t) ) );
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct BroadcastUploadStart_t
+	{
+		[MarshalAs(UnmanagedType.I1)]
+		internal bool IsRTMP; // m_bIsRTMP _Bool
+		
+		#region Marshalling
+		internal static BroadcastUploadStart_t Fill( IntPtr p ) => ((BroadcastUploadStart_t)(BroadcastUploadStart_t) Marshal.PtrToStructure( p, typeof(BroadcastUploadStart_t) ) );
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct BroadcastUploadStop_t
+	{
+		internal BroadcastUploadResult Result; // m_eResult enum EBroadcastUploadResult
+		
+		#region Marshalling
+		internal static BroadcastUploadStop_t Fill( IntPtr p ) => ((BroadcastUploadStop_t)(BroadcastUploadStop_t) Marshal.PtrToStructure( p, typeof(BroadcastUploadStop_t) ) );
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct SteamRemotePlaySessionConnected_t
+	{
+		internal uint SessionID; // m_unSessionID RemotePlaySessionID_t
+		
+		#region SteamCallback
+		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRemotePlaySessionConnected_t) );
+		internal static SteamRemotePlaySessionConnected_t Fill( IntPtr p ) => ((SteamRemotePlaySessionConnected_t)(SteamRemotePlaySessionConnected_t) Marshal.PtrToStructure( p, typeof(SteamRemotePlaySessionConnected_t) ) );
+		
+		static Action<SteamRemotePlaySessionConnected_t> actionClient;
+		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
+		static Action<SteamRemotePlaySessionConnected_t> actionServer;
+		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
+		public static void Install( Action<SteamRemotePlaySessionConnected_t> action, bool server = false )
+		{
+			if ( server )
+			{
+				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamRemotePlay + 1, true );
+				actionServer = action;
+			}
+			else
+			{
+				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamRemotePlay + 1, false );
+				actionClient = action;
+			}
+		}
+		public static async Task<SteamRemotePlaySessionConnected_t?> GetResultAsync( SteamAPICall_t handle )
+		{
+			bool failed = false;
+			
+			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
+			{
+				await Task.Delay( 1 );
+				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
+			}
+			if ( failed ) return null;
+			
+			var ptr = Marshal.AllocHGlobal( StructSize );
+			
+			try
+			{
+				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamRemotePlay + 1, ref failed ) || failed )
+					return null;
+			
+				return Fill( ptr );
+			}
+			finally
+			{
+				Marshal.FreeHGlobal( ptr );
+			}
+		}
+		#endregion
+	}
+	
+	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
+	internal struct SteamRemotePlaySessionDisconnected_t
+	{
+		internal uint SessionID; // m_unSessionID RemotePlaySessionID_t
+		
+		#region SteamCallback
+		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRemotePlaySessionDisconnected_t) );
+		internal static SteamRemotePlaySessionDisconnected_t Fill( IntPtr p ) => ((SteamRemotePlaySessionDisconnected_t)(SteamRemotePlaySessionDisconnected_t) Marshal.PtrToStructure( p, typeof(SteamRemotePlaySessionDisconnected_t) ) );
+		
+		static Action<SteamRemotePlaySessionDisconnected_t> actionClient;
+		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
+		static Action<SteamRemotePlaySessionDisconnected_t> actionServer;
+		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
+		public static void Install( Action<SteamRemotePlaySessionDisconnected_t> action, bool server = false )
+		{
+			if ( server )
+			{
+				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamRemotePlay + 2, true );
+				actionServer = action;
+			}
+			else
+			{
+				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamRemotePlay + 2, false );
+				actionClient = action;
+			}
+		}
+		public static async Task<SteamRemotePlaySessionDisconnected_t?> GetResultAsync( SteamAPICall_t handle )
+		{
+			bool failed = false;
+			
+			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
+			{
+				await Task.Delay( 1 );
+				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
+			}
+			if ( failed ) return null;
+			
+			var ptr = Marshal.AllocHGlobal( StructSize );
+			
+			try
+			{
+				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamRemotePlay + 2, ref failed ) || failed )
 					return null;
 			
 				return Fill( ptr );
@@ -10026,923 +10186,6 @@ namespace Steamworks.Data
 			try
 			{
 				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUserStats + 8, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct AvailableBeaconLocationsUpdated_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AvailableBeaconLocationsUpdated_t) );
-		internal static AvailableBeaconLocationsUpdated_t Fill( IntPtr p ) => ((AvailableBeaconLocationsUpdated_t)(AvailableBeaconLocationsUpdated_t) Marshal.PtrToStructure( p, typeof(AvailableBeaconLocationsUpdated_t) ) );
-		
-		static Action<AvailableBeaconLocationsUpdated_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<AvailableBeaconLocationsUpdated_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<AvailableBeaconLocationsUpdated_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamParties + 5, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamParties + 5, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<AvailableBeaconLocationsUpdated_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamParties + 5, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct ActiveBeaconsUpdated_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ActiveBeaconsUpdated_t) );
-		internal static ActiveBeaconsUpdated_t Fill( IntPtr p ) => ((ActiveBeaconsUpdated_t)(ActiveBeaconsUpdated_t) Marshal.PtrToStructure( p, typeof(ActiveBeaconsUpdated_t) ) );
-		
-		static Action<ActiveBeaconsUpdated_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<ActiveBeaconsUpdated_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<ActiveBeaconsUpdated_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamParties + 6, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamParties + 6, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<ActiveBeaconsUpdated_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamParties + 6, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct PlaybackStatusHasChanged_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(PlaybackStatusHasChanged_t) );
-		internal static PlaybackStatusHasChanged_t Fill( IntPtr p ) => ((PlaybackStatusHasChanged_t)(PlaybackStatusHasChanged_t) Marshal.PtrToStructure( p, typeof(PlaybackStatusHasChanged_t) ) );
-		
-		static Action<PlaybackStatusHasChanged_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<PlaybackStatusHasChanged_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<PlaybackStatusHasChanged_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamMusic + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamMusic + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<PlaybackStatusHasChanged_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamMusic + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct BroadcastUploadStart_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(BroadcastUploadStart_t) );
-		internal static BroadcastUploadStart_t Fill( IntPtr p ) => ((BroadcastUploadStart_t)(BroadcastUploadStart_t) Marshal.PtrToStructure( p, typeof(BroadcastUploadStart_t) ) );
-		
-		static Action<BroadcastUploadStart_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<BroadcastUploadStart_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<BroadcastUploadStart_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.ClientVideo + 4, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.ClientVideo + 4, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<BroadcastUploadStart_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.ClientVideo + 4, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct NewUrlLaunchParameters_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(NewUrlLaunchParameters_t) );
-		internal static NewUrlLaunchParameters_t Fill( IntPtr p ) => ((NewUrlLaunchParameters_t)(NewUrlLaunchParameters_t) Marshal.PtrToStructure( p, typeof(NewUrlLaunchParameters_t) ) );
-		
-		static Action<NewUrlLaunchParameters_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<NewUrlLaunchParameters_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<NewUrlLaunchParameters_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamApps + 14, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamApps + 14, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<NewUrlLaunchParameters_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamApps + 14, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct ItemInstalled_t
-	{
-		internal AppId AppID; // m_unAppID AppId_t
-		internal PublishedFileId PublishedFileId; // m_nPublishedFileId PublishedFileId_t
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ItemInstalled_t) );
-		internal static ItemInstalled_t Fill( IntPtr p ) => ((ItemInstalled_t)(ItemInstalled_t) Marshal.PtrToStructure( p, typeof(ItemInstalled_t) ) );
-		
-		static Action<ItemInstalled_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<ItemInstalled_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<ItemInstalled_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.ClientUGC + 5, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.ClientUGC + 5, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<ItemInstalled_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.ClientUGC + 5, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct SteamNetConnectionStatusChangedCallback_t
-	{
-		internal Connection Conn; // m_hConn HSteamNetConnection
-		internal ConnectionInfo Nfo; // m_info SteamNetConnectionInfo_t
-		internal ConnectionState OldState; // m_eOldState ESteamNetworkingConnectionState
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetConnectionStatusChangedCallback_t) );
-		internal static SteamNetConnectionStatusChangedCallback_t Fill( IntPtr p ) => ((SteamNetConnectionStatusChangedCallback_t)(SteamNetConnectionStatusChangedCallback_t) Marshal.PtrToStructure( p, typeof(SteamNetConnectionStatusChangedCallback_t) ) );
-		
-		static Action<SteamNetConnectionStatusChangedCallback_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<SteamNetConnectionStatusChangedCallback_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<SteamNetConnectionStatusChangedCallback_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamNetworkingSockets + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamNetworkingSockets + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<SteamNetConnectionStatusChangedCallback_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamNetworkingSockets + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct SteamInventoryDefinitionUpdate_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryDefinitionUpdate_t) );
-		internal static SteamInventoryDefinitionUpdate_t Fill( IntPtr p ) => ((SteamInventoryDefinitionUpdate_t)(SteamInventoryDefinitionUpdate_t) Marshal.PtrToStructure( p, typeof(SteamInventoryDefinitionUpdate_t) ) );
-		
-		static Action<SteamInventoryDefinitionUpdate_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<SteamInventoryDefinitionUpdate_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<SteamInventoryDefinitionUpdate_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.ClientInventory + 2, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.ClientInventory + 2, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<SteamInventoryDefinitionUpdate_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.ClientInventory + 2, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct SteamParentalSettingsChanged_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamParentalSettingsChanged_t) );
-		internal static SteamParentalSettingsChanged_t Fill( IntPtr p ) => ((SteamParentalSettingsChanged_t)(SteamParentalSettingsChanged_t) Marshal.PtrToStructure( p, typeof(SteamParentalSettingsChanged_t) ) );
-		
-		static Action<SteamParentalSettingsChanged_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<SteamParentalSettingsChanged_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<SteamParentalSettingsChanged_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamParentalSettings + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamParentalSettings + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<SteamParentalSettingsChanged_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamParentalSettings + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct SteamServersConnected_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamServersConnected_t) );
-		internal static SteamServersConnected_t Fill( IntPtr p ) => ((SteamServersConnected_t)(SteamServersConnected_t) Marshal.PtrToStructure( p, typeof(SteamServersConnected_t) ) );
-		
-		static Action<SteamServersConnected_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<SteamServersConnected_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<SteamServersConnected_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUser + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUser + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<SteamServersConnected_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUser + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct NewLaunchQueryParameters_t
-	{
-		
-		#region Marshalling
-		internal static NewLaunchQueryParameters_t Fill( IntPtr p ) => ((NewLaunchQueryParameters_t)(NewLaunchQueryParameters_t) Marshal.PtrToStructure( p, typeof(NewLaunchQueryParameters_t) ) );
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct GCMessageAvailable_t
-	{
-		internal uint MessageSize; // m_nMessageSize uint32
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GCMessageAvailable_t) );
-		internal static GCMessageAvailable_t Fill( IntPtr p ) => ((GCMessageAvailable_t)(GCMessageAvailable_t) Marshal.PtrToStructure( p, typeof(GCMessageAvailable_t) ) );
-		
-		static Action<GCMessageAvailable_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<GCMessageAvailable_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<GCMessageAvailable_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamGameCoordinator + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamGameCoordinator + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<GCMessageAvailable_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamGameCoordinator + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct GCMessageFailed_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GCMessageFailed_t) );
-		internal static GCMessageFailed_t Fill( IntPtr p ) => ((GCMessageFailed_t)(GCMessageFailed_t) Marshal.PtrToStructure( p, typeof(GCMessageFailed_t) ) );
-		
-		static Action<GCMessageFailed_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<GCMessageFailed_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<GCMessageFailed_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamGameCoordinator + 2, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamGameCoordinator + 2, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<GCMessageFailed_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamGameCoordinator + 2, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct ScreenshotRequested_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ScreenshotRequested_t) );
-		internal static ScreenshotRequested_t Fill( IntPtr p ) => ((ScreenshotRequested_t)(ScreenshotRequested_t) Marshal.PtrToStructure( p, typeof(ScreenshotRequested_t) ) );
-		
-		static Action<ScreenshotRequested_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<ScreenshotRequested_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<ScreenshotRequested_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamScreenshots + 2, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamScreenshots + 2, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<ScreenshotRequested_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamScreenshots + 2, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct LicensesUpdated_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LicensesUpdated_t) );
-		internal static LicensesUpdated_t Fill( IntPtr p ) => ((LicensesUpdated_t)(LicensesUpdated_t) Marshal.PtrToStructure( p, typeof(LicensesUpdated_t) ) );
-		
-		static Action<LicensesUpdated_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<LicensesUpdated_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<LicensesUpdated_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUser + 25, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUser + 25, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<LicensesUpdated_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUser + 25, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct SteamShutdown_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamShutdown_t) );
-		internal static SteamShutdown_t Fill( IntPtr p ) => ((SteamShutdown_t)(SteamShutdown_t) Marshal.PtrToStructure( p, typeof(SteamShutdown_t) ) );
-		
-		static Action<SteamShutdown_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<SteamShutdown_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<SteamShutdown_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUtils + 4, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUtils + 4, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<SteamShutdown_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUtils + 4, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct IPCountry_t
-	{
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(IPCountry_t) );
-		internal static IPCountry_t Fill( IntPtr p ) => ((IPCountry_t)(IPCountry_t) Marshal.PtrToStructure( p, typeof(IPCountry_t) ) );
-		
-		static Action<IPCountry_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<IPCountry_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<IPCountry_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUtils + 1, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUtils + 1, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<IPCountry_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUtils + 1, ref failed ) || failed )
-					return null;
-			
-				return Fill( ptr );
-			}
-			finally
-			{
-				Marshal.FreeHGlobal( ptr );
-			}
-		}
-		#endregion
-	}
-	
-	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
-	internal struct IPCFailure_t
-	{
-		internal byte FailureType; // m_eFailureType uint8
-		
-		#region SteamCallback
-		internal static readonly int StructSize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(IPCFailure_t) );
-		internal static IPCFailure_t Fill( IntPtr p ) => ((IPCFailure_t)(IPCFailure_t) Marshal.PtrToStructure( p, typeof(IPCFailure_t) ) );
-		
-		static Action<IPCFailure_t> actionClient;
-		[MonoPInvokeCallback] static void OnClient( IntPtr thisptr, IntPtr pvParam ) => actionClient?.Invoke( Fill( pvParam ) );
-		static Action<IPCFailure_t> actionServer;
-		[MonoPInvokeCallback] static void OnServer( IntPtr thisptr, IntPtr pvParam ) => actionServer?.Invoke( Fill( pvParam ) );
-		public static void Install( Action<IPCFailure_t> action, bool server = false )
-		{
-			if ( server )
-			{
-				Event.Register( OnServer, StructSize, CallbackIdentifiers.SteamUser + 17, true );
-				actionServer = action;
-			}
-			else
-			{
-				Event.Register( OnClient, StructSize, CallbackIdentifiers.SteamUser + 17, false );
-				actionClient = action;
-			}
-		}
-		public static async Task<IPCFailure_t?> GetResultAsync( SteamAPICall_t handle )
-		{
-			bool failed = false;
-			
-			while ( !SteamUtils.IsCallComplete( handle, out failed ) )
-			{
-				await Task.Delay( 1 );
-				if ( !SteamClient.IsValid && !SteamServer.IsValid ) return null;
-			}
-			if ( failed ) return null;
-			
-			var ptr = Marshal.AllocHGlobal( StructSize );
-			
-			try
-			{
-				if ( !SteamUtils.Internal.GetAPICallResult( handle, ptr, StructSize, CallbackIdentifiers.SteamUser + 17, ref failed ) || failed )
 					return null;
 			
 				return Fill( ptr );
