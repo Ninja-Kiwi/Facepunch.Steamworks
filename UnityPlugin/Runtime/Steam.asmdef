@@ -2,6 +2,8 @@
     "name": "Steam",
     "rootNamespace": "",
     "references": [
+        "UnityEngine",
+        "NinjaKiwi.LiNK"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
