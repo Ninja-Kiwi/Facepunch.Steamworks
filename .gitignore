@@ -72,6 +72,5 @@ mscorlib.dll
 *.nlp
 packages
 Generator/bin
-*.XML
 .vs
 Facepunch.Steamworks.Test/bin/**
