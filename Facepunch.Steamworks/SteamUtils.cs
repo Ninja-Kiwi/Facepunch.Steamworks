@@ -61,6 +61,9 @@ namespace Steamworks
 		/// </summary>
 		public static event Action<bool> OnGamepadTextInputDismissed;
 
+		/// <summary>
+		/// Invoked when the floating on-screen keyboard has been closed.
+		/// </summary>
 		public static event Action OnFloatingGamepadTextInputDismissed;
 
 		/// <summary>
@@ -300,21 +303,40 @@ namespace Steamworks
 		public static void SetGameLauncherMode( bool mode ) => Internal.SetGameLauncherMode( mode );
 
 
-		public static void ShowFloatingGamepadTextInput( TextInputMode mode, int left, int top, int width, int height )
+		/// <summary>
+		/// Opens a floating keyboard over the game content and sends OS keyboard keys directly to the game.
+		/// The text field position is specified in pixels relative to the origin of the game window and is used
+		/// to position the floating keyboard in a way that doesn't cover the text field.
+		/// </summary>
+		/// <param name="mode">Specifies the text input mode and keyboard layout (single line, multiple lines, email, or numeric).</param>
+		/// <param name="left">X coordinate of the text field which shouldn't be obscured by the floating keyboard.</param>
+		/// <param name="top">Y coordinate of the text field which shouldn't be obscured by the floating keyboard.</param>
+		/// <param name="width">Width of the text field which shouldn't be obscured by the floating keyboard.</param>
+		/// <param name="height">Height of the text field which shouldn't be obscured by the floating keyboard.</param>
+		/// <returns><see langword="true"/> if the floating keyboard was shown successfully; otherwise, <see langword="false"/>.</returns>
+		public static bool ShowFloatingGamepadTextInput( TextInputMode mode, int left, int top, int width, int height )
 		{
-			Internal.ShowFloatingGamepadTextInput( mode, left, top, width, height );
+			return Internal.ShowFloatingGamepadTextInput( mode, left, top, width, height );
 		}
 
 
-		public static void DismissFloatingGamepadTextInput()
+		/// <summary>
+		/// Dismisses the floating keyboard that was invoked by <see cref="ShowFloatingGamepadTextInput"/>.
+		/// </summary>
+		/// <returns><see langword="true"/> if the floating keyboard was dismissed successfully; otherwise, <see langword="false"/>.</returns>
+		public static bool DismissFloatingGamepadTextInput()
 		{
-			Internal.DismissFloatingGamepadTextInput();
+			return Internal.DismissFloatingGamepadTextInput();
 		}
 
 
-		public static void DismissGamepadTextInput()
+		/// <summary>
+		/// Dismisses the Big Picture gamepad text input dialog that was invoked by <see cref="ShowGamepadTextInput"/>.
+		/// </summary>
+		/// <returns><see langword="true"/> if the gamepad text input was dismissed successfully; otherwise, <see langword="false"/>.</returns>
+		public static bool DismissGamepadTextInput()
 		{
-			Internal.DismissGamepadTextInput();
+			return Internal.DismissGamepadTextInput();
 		}
 	}
 }
