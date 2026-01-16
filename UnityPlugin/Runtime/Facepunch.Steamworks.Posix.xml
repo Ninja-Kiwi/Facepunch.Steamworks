@@ -3507,6 +3507,11 @@
             Invoked when Big Picture gamepad text input has been closed. Parameter is <see langword="true"/> if text was submitted, <see langword="false"/> if cancelled etc.
             </summary>
         </member>
+        <member name="E:Steamworks.SteamUtils.OnFloatingGamepadTextInputDismissed">
+            <summary>
+            Invoked when the floating on-screen keyboard has been closed.
+            </summary>
+        </member>
         <member name="P:Steamworks.SteamUtils.SecondsSinceAppActive">
             <summary>
             Returns the number of seconds since the application was active.
